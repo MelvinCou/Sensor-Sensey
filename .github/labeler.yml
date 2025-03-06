@@ -1,0 +1,20 @@
+gateway:
+  - changed-files:
+      - any-glob-to-any-file: gateway/**
+github:
+  - changed-files:
+      - any-glob-to-any-file: .github/**
+sensors:
+  - changed-files:
+      - any-glob-to-any-file: sensors/**
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: "**/platformio.ini"
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: "**.md"
+
+enhancement:
+  - head-branch: ['^feature']
+bug:
+  - head-branch: ['^fix']
