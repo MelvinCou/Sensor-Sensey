@@ -1,0 +1,16 @@
+---
+Checks: 'clang-diagnostic-*,clang-analyzer-*,readability-*'
+WarningsAsErrors: ''
+HeaderFileExtensions:
+  - h
+  - hh
+  - hpp
+  - hxx
+ImplementationFileExtensions:
+  - c
+  - cc
+  - cpp
+  - cxx
+FormatStyle: file
+SystemHeaders:   false
+...
