@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    paths:
+      - gateway/**
+      - sensors/**
+
+jobs:
+  clang:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang format
+        run: |
+          sudo apt-get install --no-install-recommends -qqy clang-format clang-tidy
+      - name: Check actual code formatting
+        run: |
+          ./scripts/format.sh
+          git diff --exit-code
+      - name: Lint code
+        run: |
+          ./scripts/lint.sh
