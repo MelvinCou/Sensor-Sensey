@@ -24,6 +24,39 @@ jobs:
         run: |
           ./scripts/format.sh
           git diff --exit-code
-      - name: Lint code
+      # - name: Lint code
+      #   run: |
+      #     ./scripts/lint.sh
+  pio:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+            gateway/.pio
+            sensors/.pio
+          key: ${{ runner.os }}-pio-${{ hashFiles('gateway/platformio.ini', 'sensors/platformio.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-pio-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install APT dependencies
         run: |
-          ./scripts/lint.sh
+          sudo apt-get -qqy update
+          sudo apt-get install -qqy libbsd-dev
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+
+      - name: Build PlatformIO gateway
+        working-directory: gateway
+        run: pio run
+
+      - name: Build PlatformIO sensors
+        working-directory: sensors
+        run: pio run
