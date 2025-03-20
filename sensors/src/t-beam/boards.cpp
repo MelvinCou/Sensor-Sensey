@@ -8,7 +8,7 @@
  *
  */
 
-#include "LoraBoards.h"
+#include "t-beam/boards.h"
 
 #include "soc/rtc.h"
 #ifdef ENABLE_BLE
