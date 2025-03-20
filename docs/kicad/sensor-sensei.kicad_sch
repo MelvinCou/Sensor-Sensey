@@ -1,0 +1,18 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "70e9a7f1-6fb2-48d3-8eeb-4403e7889f3c")
+	(paper "A4")
+	(title_block
+		(title "Sensor Sensei")
+		(date "2025-03-20")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
