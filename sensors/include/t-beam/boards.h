@@ -72,8 +72,6 @@ typedef struct {
 
 void setupBoards(bool disable_u8g2 = false);
 
-void disablePeripherals();
-
 bool beginPower();
 
 void printResult(bool radio_online);

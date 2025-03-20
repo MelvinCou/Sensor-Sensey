@@ -1,6 +1,6 @@
 // Only supports SX1276/SX1278
 #include <LoRa.h>
-#include "LoraBoards.h"
+#include "t-beam/boards.h"
 
 #ifndef CONFIG_RADIO_FREQ
 #define CONFIG_RADIO_FREQ           868.0
