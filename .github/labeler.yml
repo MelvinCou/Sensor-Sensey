@@ -13,8 +13,12 @@ dependencies:
 documentation:
   - changed-files:
       - any-glob-to-any-file: "**.md"
+      - any-glob-to-any-file: docs/**
+kicad:
+  - changed-files:
+      - any-glob-to-any-file: docs/kicad/**
 
 enhancement:
-  - head-branch: ['^feature']
+  - head-branch: ["^feature"]
 bug:
-  - head-branch: ['^fix']
+  - head-branch: ["^fix"]
