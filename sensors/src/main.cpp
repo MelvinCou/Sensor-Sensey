@@ -3,19 +3,9 @@
 
 #include "t-beam/boards.h"
 
-#ifndef CONFIG_RADIO_FREQ
-#define CONFIG_RADIO_FREQ 868.0
-#endif
-#ifndef CONFIG_RADIO_OUTPUT_POWER
-#define CONFIG_RADIO_OUTPUT_POWER 17
-#endif
-#ifndef CONFIG_RADIO_BW
+#define CONFIG_RADIO_FREQ 868E6
+//#define CONFIG_RADIO_OUTPUT_POWER 17
 #define CONFIG_RADIO_BW 125.0
-#endif
-
-#if !defined(USING_SX1276) && !defined(USING_SX1278)
-#error "LoRa example is only allowed to run SX1276/78. For other RF models, please run examples/RadioLibExamples"
-#endif
 
 int counter = 0;
 
@@ -24,33 +14,22 @@ void setup() {
   // When the power is turned on, a delay is required.
   delay(1500);
 
-#ifdef RADIO_TCXO_ENABLE
-  pinMode(RADIO_TCXO_ENABLE, OUTPUT);
-  digitalWrite(RADIO_TCXO_ENABLE, HIGH);
-#endif
-
   Serial.println("LoRa Sender");
   LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DIO0_PIN);
-  if (!LoRa.begin(CONFIG_RADIO_FREQ * 1000000)) {
+  if (!LoRa.begin(CONFIG_RADIO_FREQ)) {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
-
+  /*
   LoRa.setTxPower(CONFIG_RADIO_OUTPUT_POWER);
-
   LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
-
-  LoRa.setSpreadingFactor(10);
-
+  LoRa.setSpreadingFactor(7);
   LoRa.setPreambleLength(16);
-
   LoRa.setSyncWord(0xAB);
-
   LoRa.disableCrc();
-
   LoRa.disableInvertIQ();
-
   LoRa.setCodingRate4(7);
+  */
 }
 
 void loop() {
@@ -59,9 +38,11 @@ void loop() {
 
   // send packet
   LoRa.beginPacket();
-  LoRa.print("hello ");
+  //LoRa.print("hello ");
   LoRa.print(counter);
-  LoRa.endPacket();
+  if(LoRa.endPacket() == 0) {
+    Serial.println("Failed to send packet");
+  }
 
   counter++;
   delay(5000);
