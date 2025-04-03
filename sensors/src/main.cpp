@@ -1,11 +1,6 @@
-// Only supports SX1276/SX1278
-#include <LoRa.h>
-
+#include "loRaHandler.h"
+#include "message.pb.h"
 #include "t-beam/boards.h"
-
-#define CONFIG_RADIO_FREQ 868E6
-//#define CONFIG_RADIO_OUTPUT_POWER 17
-#define CONFIG_RADIO_BW 125.0
 
 int counter = 0;
 
@@ -13,37 +8,14 @@ void setup() {
   setupBoards();
   // When the power is turned on, a delay is required.
   delay(1500);
-
-  Serial.println("LoRa Sender");
-  LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DIO0_PIN);
-  if (!LoRa.begin(CONFIG_RADIO_FREQ)) {
-    Serial.println("Starting LoRa failed!");
-    while (1);
-  }
-  /*
-  LoRa.setTxPower(CONFIG_RADIO_OUTPUT_POWER);
-  LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
-  LoRa.setSpreadingFactor(7);
-  LoRa.setPreambleLength(16);
-  LoRa.setSyncWord(0xAB);
-  LoRa.disableCrc();
-  LoRa.disableInvertIQ();
-  LoRa.setCodingRate4(7);
-  */
 }
 
+Message original = Message_init_zero;
+
 void loop() {
-  Serial.print("Sending packet: ");
-  Serial.println(counter);
+  original.kind = SensorKind::SensorKind_BMP280;
+  strcpy(original.str, "coucou sdfsfsdf_");
 
-  // send packet
-  LoRa.beginPacket();
-  //LoRa.print("hello ");
-  LoRa.print(counter);
-  if(LoRa.endPacket() == 0) {
-    Serial.println("Failed to send packet");
-  }
-
-  counter++;
+  sendMessage(original);
   delay(5000);
 }

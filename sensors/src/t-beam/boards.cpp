@@ -9,6 +9,7 @@
  */
 
 #include "t-beam/boards.h"
+#include "loRaHandler.h"
 
 #include "soc/rtc.h"
 #ifdef ENABLE_BLE
@@ -16,6 +17,7 @@
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #endif
+
 
 #if defined(ARDUINO_ARCH_ESP32)
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
@@ -395,6 +397,8 @@ void setupBoards(bool disable_u8g2) {
   SPI.setSCLK(RADIO_SCLK_PIN);
   SPI.begin();
 #endif
+
+loRaBegin();
 
 #ifdef I2C_SDA
   Wire.begin(I2C_SDA, I2C_SCL);
