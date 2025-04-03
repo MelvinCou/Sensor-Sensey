@@ -40,6 +40,10 @@
 
 // #define T_BEAM_S3_BPF
 
+// LoRa configuration
+#define CONFIG_RADIO_FREQ 868E6
+#define CONFIG_RADIO_BW 125.0
+
 #define UNUSED_PIN (0)
 
 #if defined(T_BEAM_SX1262) || defined(T_BEAM_SX1276) || defined(T_BEAM_SX1278) || defined(T_BEAM_LR1121)
