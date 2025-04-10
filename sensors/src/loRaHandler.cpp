@@ -11,12 +11,12 @@ void loRaBegin() {
   if (!LoRa.begin(CONFIG_RADIO_FREQ)) {
     LOG_ERROR("Starting LoRa failed!\n");
   }
+  LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
+  LoRa.setSyncWord(0xAB);
+  LoRa.setSpreadingFactor(7);
+  LoRa.setPreambleLength(8);
   /*
   LoRa.setTxPower(CONFIG_RADIO_OUTPUT_POWER);
-  LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
-  LoRa.setSpreadingFactor(7);
-  LoRa.setPreambleLength(16);
-  LoRa.setSyncWord(0xAB);
   LoRa.disableCrc();
   LoRa.disableInvertIQ();
   LoRa.setCodingRate4(7);
