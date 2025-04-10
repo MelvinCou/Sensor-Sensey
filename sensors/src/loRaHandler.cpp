@@ -1,10 +1,12 @@
 #include "loRaHandler.h"
-#include "t-beam/utilities.h"
 
 #include <LoRa.h>
-#include <Logger.hpp>
 #include <message.pb.h>
 #include <pb_encode.h>
+
+#include <Logger.hpp>
+
+#include "t-beam/utilities.h"
 
 void loRaBegin() {
   LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DIO0_PIN);
