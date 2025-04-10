@@ -1,9 +1,12 @@
+#include "Arduino.h"
 #include "loRaHandler.h"
-#include <Arduino.h>
 
 void setup() {
   Serial.begin(115200);
+  sleep(1);
   loRaBegin();
 }
 
-void loop() {}
+void loop() {
+  onReceive();
+}
