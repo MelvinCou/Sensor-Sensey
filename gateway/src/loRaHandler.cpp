@@ -11,16 +11,13 @@
 Radio radio = new RadioModule();
 
 #define CONFIG_RADIO_FREQ 868.0F
-// Bandwidth
+// bandwidth
 #define CONFIG_RADIO_BW 125.0F
 // spreading factor
 #define CONFIG_RADIO_SF 7U
 #define CONFIG_RADIO_CR 7U
 // sync word
 #define CONFIG_RADIO_SW 0xAB
-
-// save transmission states between loops
-int transmissionState = RADIOLIB_ERR_NONE;
 
 // flag to indicate that a packet was received
 volatile bool receivedFlag = false;
@@ -54,13 +51,6 @@ void loRaBegin() {
   // set the function that will be called
   // when new packet is received
   radio.setPacketReceivedAction(setFlag);
-
-#if defined(INITIATING_NODE)
-  // send the first packet on this node
-  Serial.print(F("[SX1262] Sending first packet ... "));
-  transmissionState = radio.startTransmit("Hello World!");
-  transmitFlag = true;
-#else
   // start listening for LoRa packets on this node
   Serial.print(F("[SX1262] Starting to listen ... "));
   state = radio.startReceive();
@@ -73,7 +63,6 @@ void loRaBegin() {
       delay(10);
     }
   }
-#endif
 }
 
 uint8_t buffer[Message_size * 2];
