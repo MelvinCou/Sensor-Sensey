@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message Value {
+  string value_type = 1;
+  string value = 2;
+}
+
+message Data {
+  // id from sensor.community
+  string sensor_id = 1;
+  // pin depending of sensor type
+  uint32 sensor_pin = 2;
+  // values ​​captured by the sensor
+  repeated Value values = 3;
+}

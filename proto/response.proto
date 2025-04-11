@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+enum ResponseType {
+  // an unknown error was encountered, no action required
+  ERROR_UNKNOWN = 0;
+  // an error was encountered when receiving the message, resend it
+  ERROR_RESEND = 1;
+  // the message was treated successfully
+  SUCCES = 2;
+}
+
+message Response {
+  // id from sensor.community
+  string sensor_id = 1;
+  // type of the response
+  ResponseType type = 2;
+}
