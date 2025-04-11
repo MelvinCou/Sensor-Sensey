@@ -5,6 +5,8 @@
 #include <Logger.hpp>
 #include <t-beam/utilities.h>
 
+Data message = Data_init_zero;
+
 Data readDustSensorData() {
   // Activate ILED
   digitalWrite(DUST_ILED_PIN, HIGH);
@@ -21,8 +23,6 @@ Data readDustSensorData() {
   LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
 
   // Create and return the message to transfert via loRa protocole
-  Data message = Data_init_zero;
-
   message.sensor_pin = DUST_SENSOR_COM_PIN;
   strcpy(message.sensor_id, SENSOR_COM_ID);
   message.values_count = 1;
@@ -33,6 +33,4 @@ Data readDustSensorData() {
 
 void setUpDustSensor() {
     pinMode(DUST_ILED_PIN, OUTPUT);
-    delay(280);
-    LOG_INFO("Dust Sensor set up !\n");
 }
