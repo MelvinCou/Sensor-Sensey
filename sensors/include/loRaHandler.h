@@ -1,7 +1,7 @@
 #pragma once
 
-#include "message.pb.h"
+#include "data.pb.h"
 
 void loRaBegin();
 
-void sendMessage(Message message);
+void sendMessage(const Data& message);
