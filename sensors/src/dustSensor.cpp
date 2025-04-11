@@ -7,30 +7,28 @@
 // Allocating the dust sensor's pins on ESP 32 board
 const int AOUT_PIN = 2;
 const int ILED_PIN = 13;
-// IMPORTANT: This implementation of the dust sensor is based on 5v
+// IMPORTANT: This implementation of the dust sensor is based on 3.3V
 
 Message readDustSensorData() {
   // Setup sensor data reading
   // TODO: Maybe only do this part once ?
   pinMode(ILED_PIN, OUTPUT);
   delay(280);
-  LOG_INFO("Dust Sensor set up  !");
+  LOG_INFO("Dust Sensor set up !\n");
 
   // Activate ILED
   digitalWrite(ILED_PIN, HIGH);
-  delayMicroseconds(280); 
+  delayMicroseconds(280);
 
   // Convert analogue value to voltage
   int analogValue = analogRead(AOUT_PIN);  
-  float voltage = analogValue * (5 / 4095.0); 
+  float voltage = analogValue * (3.3 / 4095.0); 
 
   // Deactivate ILED
-  delayMicroseconds(280);
   digitalWrite(ILED_PIN, LOW);
-  delayMicroseconds(280);
 
   // Print value
-  LOG_INFO("Raw Value: %d | Voltage: %.2f", analogValue, voltage);
+  LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
 
   // Create and return the message to transfert via loRa protocole
   Message message = Message_init_zero;
