@@ -44,6 +44,12 @@
 #define CONFIG_RADIO_FREQ 868E6
 #define CONFIG_RADIO_BW 125.0
 
+// Sensor community configuration
+#define SENSOR_COM_ID "esp32-1234"
+// TODO : Change PIN number according to sensor community registered pin
+#define DUST_SENSOR_COM_PIN 8
+#define DUST_SENSOR_COM_TYPE "Dust"
+
 #define UNUSED_PIN (0)
 
 #if defined(T_BEAM_SX1262) || defined(T_BEAM_SX1276) || defined(T_BEAM_SX1278) || defined(T_BEAM_LR1121)

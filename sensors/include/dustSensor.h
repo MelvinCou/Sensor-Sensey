@@ -1,7 +1,7 @@
 #pragma once
 
-#include "message.pb.h"
+#include "data.pb.h"
 
-Message readDustSensorData();
+Data readDustSensorData();
 
 void setUpDustSensor();

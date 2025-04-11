@@ -1,11 +1,11 @@
 #include "dustSensor.h"
 
-#include <message.pb.h>
+#include "data.pb.h"
 #include <HardwareSerial.h>
 #include <Logger.hpp>
 #include <t-beam/utilities.h>
 
-Message readDustSensorData() {
+Data readDustSensorData() {
   // Activate ILED
   digitalWrite(DUST_ILED_PIN, HIGH);
   delayMicroseconds(280);
@@ -21,9 +21,13 @@ Message readDustSensorData() {
   LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
 
   // Create and return the message to transfert via loRa protocole
-  Message message = Message_init_zero;
-  message.kind = SensorKind::SensorKind_DustSensor;
-  snprintf(message.str, sizeof(message.str), "%.2f", voltage);
+  Data message = Data_init_zero;
+
+  message.sensor_pin = DUST_SENSOR_COM_PIN;
+  strcpy(message.sensor_id, SENSOR_COM_ID);
+  message.values_count = 1;
+  strcpy(message.values[0].value_type, DUST_SENSOR_COM_TYPE);
+  snprintf(message.values[0].value, sizeof(message.values[0].value), "%.2f", voltage);
   return message;
 }
 
