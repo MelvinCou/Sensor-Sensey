@@ -10,6 +10,286 @@
 		(rev "0.1")
 	)
 	(lib_symbols
+		(symbol "Dust_Sensor_1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "DustSensor"
+				(at 18.288 -24.638 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.waveshare.com/wiki/Dust_Sensor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Capteur de poussière"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Dust_Sensor_1_0_1"
+				(rectangle
+					(start 1.27 -13.97)
+					(end 33.02 -38.1)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Dust_Sensor_1_1_1"
+				(pin input line
+					(at 3.81 -40.64 90)
+					(length 2.54)
+					(name "ILED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 6.35 -40.64 90)
+					(length 2.54)
+					(name "AOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 8.89 -40.64 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 11.43 -40.64 90)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 13.97 -11.43 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 15.24 -40.64 90)
+					(length 2.54)
+					(name "ILED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 16.51 -11.43 270)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -40.64 90)
+					(length 2.54)
+					(name "AOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 19.05 -11.43 270)
+					(length 2.54)
+					(name "AOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 20.32 -40.64 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 21.59 -11.43 270)
+					(length 2.54)
+					(name "ILED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 22.86 -40.64 90)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "sensor-sensei:BMP280"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -165,142 +445,6 @@
 					(at -6.35 -15.24 0)
 					(length 2.54)
 					(name "SDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "sensor-sensei:Dust_Sensor"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "DustSensor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.waveshare.com/wiki/Dust_Sensor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Capteur de poussière"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Dust_Sensor_0_1"
-				(rectangle
-					(start -3.81 -1.905)
-					(end 2.54 -13.335)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Dust_Sensor_1_1"
-				(pin power_in line
-					(at -6.35 -3.81 0)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -6.35 -6.35 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at -6.35 -8.89 0)
-					(length 2.54)
-					(name "AOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -6.35 -11.43 0)
-					(length 2.54)
-					(name "ILED"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1076,14 +1220,14 @@
 				(pin bidirectional line
 					(at 22.86 88.9 180)
 					(length 2.54)
-					(name "WIRE_SDA"
+					(name "WIRE_SCL"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "21"
+					(number "22"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1094,14 +1238,14 @@
 				(pin bidirectional line
 					(at 22.86 85.09 180)
 					(length 2.54)
-					(name "WIRE_SCL"
+					(name "WIRE_SDA"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "22"
+					(number "21"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1167,108 +1311,194 @@
 			(embedded_fonts no)
 		)
 	)
-	(no_connect
-		(at 119.38 48.26)
-		(uuid "7943b932-284f-4f17-93e7-d992a3a67ac0")
-	)
 	(wire
 		(pts
-			(xy 86.36 46.99) (xy 92.71 46.99)
+			(xy 123.19 24.13) (xy 123.19 46.99)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "02868d38-c617-40a2-839c-288a92b6fb8b")
+		(uuid "289dd6f8-a289-4a26-bea8-281029f6327e")
 	)
 	(wire
 		(pts
-			(xy 99.06 45.72) (xy 99.06 39.37)
+			(xy 123.19 24.13) (xy 143.51 24.13)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3b0c08f7-5602-4e05-962e-f99681f38417")
+		(uuid "410ba4d6-9f0d-4f18-bf7e-cda2246c474f")
 	)
 	(wire
 		(pts
-			(xy 119.38 40.64) (xy 92.71 40.64)
+			(xy 123.19 46.99) (xy 82.55 46.99)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4d70786f-2b42-483a-9b0a-d5a6e52c379b")
+		(uuid "41320f55-c32d-433b-846d-8b32775712b8")
 	)
 	(wire
 		(pts
-			(xy 92.71 40.64) (xy 92.71 46.99)
+			(xy 82.55 43.18) (xy 116.84 43.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "64ae0ed5-d0a6-4fd0-ac0d-d02160d14824")
+		(uuid "42069d1f-2c9c-4d3b-a3e5-e6242d72a126")
 	)
 	(wire
 		(pts
-			(xy 119.38 45.72) (xy 99.06 45.72)
+			(xy 116.84 43.18) (xy 116.84 20.32)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7e2a8c8e-6303-44bb-a12e-4b1b0a9db46b")
+		(uuid "680ff617-aa99-4c97-ac98-bddc860f00a1")
 	)
 	(wire
 		(pts
-			(xy 86.36 43.18) (xy 119.38 43.18)
+			(xy 146.05 20.32) (xy 146.05 24.13)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9446fc8a-5ff1-46f4-969c-76312d140891")
+		(uuid "c87b26e5-745e-4490-a3aa-b884a86073d7")
 	)
 	(wire
 		(pts
-			(xy 99.06 39.37) (xy 86.36 39.37)
+			(xy 116.84 20.32) (xy 146.05 20.32)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a683692d-1394-41e8-9bfa-e3eefe21bed6")
+		(uuid "fc06d296-888d-490a-8217-bc51c937c2d9")
+	)
+	(global_label "PIN_13"
+		(shape input)
+		(at 36.83 58.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "337ce838-d4a8-42fb-802c-83959efc63e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 27.2529 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PIN_2"
+		(shape input)
+		(at 148.59 24.13 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "63fdf9dc-893b-4a60-94ec-177ef6ee2da1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 148.59 15.7624 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PIN_2"
+		(shape input)
+		(at 36.83 62.23 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "785f4a61-ba6c-4995-9c42-40b853f4c584")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 28.4624 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PIN_13"
+		(shape input)
+		(at 151.13 24.13 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f5832bc3-d204-4e72-9811-21301fd02c48")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 151.13 14.5529 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
-		(lib_id "sensor-sensei:Lilygo_T-Beam")
-		(at 63.5 143.51 0)
+		(lib_name "Dust_Sensor_1")
+		(lib_id "sensor-sensei:Dust_Sensor")
+		(at 129.54 12.7 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0eb7bdbf-71ad-4836-863c-8a331dd807c8")
-		(property "Reference" "Lilygo_T-Beam1"
-			(at 63.5 17.78 0)
+		(uuid "664ba4d2-a0c3-4e5d-85fb-85978e11baab")
+		(property "Reference" "DustSensor"
+			(at 141.986 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "~"
-			(at 63.5 20.32 0)
+			(at 163.83 40.005 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 63.5 143.51 0)
+			(at 129.54 12.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1276,8 +1506,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lilygo.cc/products/t-beam?variant=43059202719925"
-			(at 63.5 143.51 0)
+		(property "Datasheet" "https://www.waveshare.com/wiki/Dust_Sensor"
+			(at 129.54 12.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1285,8 +1515,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Module ESP32 pour LoRa"
-			(at 63.5 143.51 0)
+		(property "Description" "Capteur de poussière"
+			(at 129.54 12.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1294,112 +1524,46 @@
 				(hide yes)
 			)
 		)
-		(pin "22"
-			(uuid "9d0977e8-ad17-4f3d-915a-8ea2181aeb24")
+		(pin ""
+			(uuid "2e414436-c87d-4203-b39e-2ea880be8117")
 		)
 		(pin ""
-			(uuid "87909382-992a-47be-9fa3-99fdd72fbafe")
-		)
-		(pin "0"
-			(uuid "d4f7989b-3a3d-47e8-b95c-41c144221738")
+			(uuid "3520f849-3bca-4dbf-ba9b-c141c503644f")
 		)
 		(pin ""
-			(uuid "0f86c5b4-bb4f-403e-82e3-5450e20d39d7")
+			(uuid "d8c838c6-4ccc-4b11-b5b6-fa303469e50d")
 		)
 		(pin ""
-			(uuid "bc1b41e0-9013-4526-b359-34756280f08a")
-		)
-		(pin "12"
-			(uuid "ecdf7e1b-2198-488c-9e00-ccf53fd0a311")
-		)
-		(pin "3"
-			(uuid "17e07935-9557-404a-a4f8-f6570c75625a")
-		)
-		(pin "VN"
-			(uuid "2f81e284-c96d-4634-b5f1-a793f59a8cbd")
+			(uuid "b7fa38ca-988c-4973-b39f-d9fa23772446")
 		)
 		(pin ""
-			(uuid "51de78cc-2528-499c-8695-eb296bfa4d6e")
-		)
-		(pin "VP"
-			(uuid "0c55e55b-081b-4839-9503-c580900dc746")
+			(uuid "e71124bc-2dc1-4524-8ede-84dfe055450f")
 		)
 		(pin ""
-			(uuid "7f58611c-718f-4af1-9dbd-7b4561695bee")
-		)
-		(pin "25"
-			(uuid "b0c9a538-e51c-40bb-b396-0278e1e31507")
-		)
-		(pin "14"
-			(uuid "063830bd-375f-4a83-a684-4f04923ba7ba")
-		)
-		(pin "34"
-			(uuid "a5e3d423-84bf-4d4b-8bc5-e2ebc8808d64")
-		)
-		(pin "15"
-			(uuid "905ae72c-2314-47d6-a8e4-399a6b134cfa")
-		)
-		(pin "5"
-			(uuid "f9dff3cb-ddfc-40e9-a41d-2362c0e05819")
-		)
-		(pin "RST"
-			(uuid "15b6062b-00ae-4528-a3a4-e2e206a26456")
-		)
-		(pin "23"
-			(uuid "58236c7d-7b70-4cfe-9684-3a4bba88a290")
-		)
-		(pin "33"
-			(uuid "76fd2d81-c690-4ea5-a1b9-12adb39b9e6c")
-		)
-		(pin "19"
-			(uuid "b4cbd2e8-308c-4d22-aed5-43ea7e0426a9")
-		)
-		(pin "1"
-			(uuid "01b467f3-d3c3-4cad-b7dc-6fd116910bc3")
+			(uuid "d0a179a3-37e4-4244-a6db-ccc4652c60b2")
 		)
 		(pin ""
-			(uuid "7967fc97-a6b2-431d-b7e9-a15b71cc4767")
-		)
-		(pin "23"
-			(uuid "6dd813e2-f978-4903-915b-e289855480e6")
-		)
-		(pin "21"
-			(uuid "08b1b811-167a-45f4-8b55-aa9dd8a3a846")
-		)
-		(pin "35"
-			(uuid "1e458c7e-448a-4cbb-8ed4-d6c26b4b25d1")
-		)
-		(pin "2"
-			(uuid "5539aea2-e93c-4132-8a38-85b5493e2c8f")
-		)
-		(pin "4"
-			(uuid "050f9152-d00c-47ce-b829-8ee1bd0820e6")
+			(uuid "598841ab-66c8-410c-ada1-ea97d9e08a32")
 		)
 		(pin ""
-			(uuid "e1bf6530-f897-4a87-b7cd-659bd64614bd")
-		)
-		(pin "27"
-			(uuid "857bbca3-bf88-4ced-9acf-118100decff7")
-		)
-		(pin "18"
-			(uuid "24fa313c-28fc-40d2-a966-ff356ada5553")
-		)
-		(pin "13"
-			(uuid "f6546f36-9161-4681-98be-cac5ac9cd532")
+			(uuid "283ab35d-4292-4211-a9de-7de978e25488")
 		)
 		(pin ""
-			(uuid "6a7ba6c0-b99b-41c9-9769-b6e10c6e6c65")
+			(uuid "b746d018-a816-4042-8b18-85d6be9d3625")
 		)
-		(pin "26"
-			(uuid "c904a846-9440-49b0-ac39-29c9ee4b11e5")
+		(pin ""
+			(uuid "0d279a62-10db-47c2-93c0-4cb6fe83984a")
 		)
-		(pin "32"
-			(uuid "8474f71d-c802-45e3-8e8f-a4a2ce5ccdad")
+		(pin ""
+			(uuid "3d7433f7-46ab-4939-bbcb-21a03ddc9ec0")
+		)
+		(pin ""
+			(uuid "b4c41cae-156c-465a-9bdf-576f77470f75")
 		)
 		(instances
 			(project ""
 				(path "/70e9a7f1-6fb2-48d3-8eeb-4403e7889f3c"
-					(reference "Lilygo_T-Beam1")
+					(reference "DustSensor")
 					(unit 1)
 				)
 			)
@@ -1407,7 +1571,7 @@
 	)
 	(symbol
 		(lib_id "sensor-sensei:BMP280")
-		(at 24.13 93.98 180)
+		(at 17.78 93.98 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1416,7 +1580,7 @@
 		(fields_autoplaced yes)
 		(uuid "6a6b0768-4b31-4d57-8375-a7e5a8556f4c")
 		(property "Reference" "BMP1"
-			(at 24.13 73.66 0)
+			(at 17.78 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1424,7 +1588,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 24.13 76.2 0)
+			(at 17.78 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1432,7 +1596,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 24.13 93.98 0)
+			(at 17.78 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1441,7 +1605,7 @@
 			)
 		)
 		(property "Datasheet" "https://electro-proto.fr/index.php?controller=attachment&id_attachment=5"
-			(at 24.13 93.98 0)
+			(at 17.78 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1450,7 +1614,7 @@
 			)
 		)
 		(property "Description" "Capteur de température / humidité numérique"
-			(at 24.13 93.98 0)
+			(at 17.78 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1566,35 +1730,33 @@
 		)
 	)
 	(symbol
-		(lib_id "sensor-sensei:Dust_Sensor")
-		(at 125.73 36.83 0)
+		(lib_id "sensor-sensei:Lilygo_T-Beam")
+		(at 59.69 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "fed766e8-7df3-482e-aeb6-d9195095c03e")
-		(property "Reference" "DustSensor1"
-			(at 129.54 43.8149 0)
+		(uuid "c9e25cce-ec2e-4e54-b835-66044c8c4dd5")
+		(property "Reference" "Lilygo_T-Beam3"
+			(at 59.69 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "~"
-			(at 129.54 45.72 0)
+			(at 59.69 20.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 125.73 36.83 0)
+			(at 59.69 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1602,8 +1764,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.waveshare.com/wiki/Dust_Sensor"
-			(at 125.73 36.83 0)
+		(property "Datasheet" "https://lilygo.cc/products/t-beam?variant=43059202719925"
+			(at 59.69 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1611,8 +1773,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Capteur de poussière"
-			(at 125.73 36.83 0)
+		(property "Description" "Module ESP32 pour LoRa"
+			(at 59.69 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1620,22 +1782,112 @@
 				(hide yes)
 			)
 		)
-		(pin ""
-			(uuid "00534bbd-a0ed-40ab-8b19-5d7d157b3d85")
+		(pin "13"
+			(uuid "694f5baf-388a-4987-99f4-bc19e314f669")
 		)
 		(pin ""
-			(uuid "34fdb876-f7f5-4935-89e6-19c8163a70eb")
+			(uuid "47fb9101-2e70-4b9a-a61a-585faf796aaf")
+		)
+		(pin "23"
+			(uuid "b8e9ff40-7101-4901-b227-fdac86fdf978")
+		)
+		(pin "12"
+			(uuid "a35409ff-d35f-4d31-af39-83f87c5bdb6d")
 		)
 		(pin ""
-			(uuid "d8bd864e-ea10-4c0d-87b2-e9ae1a253705")
+			(uuid "f73e2338-c1a4-4d31-8dc6-0284222343ea")
 		)
 		(pin ""
-			(uuid "b5e26b15-7a6c-4b17-847b-a50a2d01bd73")
+			(uuid "7ae72795-85d0-4cfb-8626-3fcb3a461e94")
+		)
+		(pin "15"
+			(uuid "7ae85956-a04a-489d-9715-4f4602f8c26f")
+		)
+		(pin "5"
+			(uuid "ebdb079b-a64c-46ad-8e8e-e5b3ff2f338e")
+		)
+		(pin "1"
+			(uuid "938f9f11-2f05-45af-90f3-7cab4b27a828")
+		)
+		(pin "4"
+			(uuid "edf4482f-8ae1-40e2-8513-220f6d0da9ec")
+		)
+		(pin "26"
+			(uuid "a8ba43be-c5f6-42b2-8e97-23d1fdec7f2a")
+		)
+		(pin "27"
+			(uuid "551612d6-7315-40bf-880b-729ecd835404")
+		)
+		(pin "34"
+			(uuid "d407d281-5536-41c3-a4ff-e741d1b366ef")
+		)
+		(pin "33"
+			(uuid "ddd221d5-a669-4d61-8e47-bbdd5e0e5e79")
+		)
+		(pin "2"
+			(uuid "44b56f28-5d9f-48e6-af62-79c08b363e29")
+		)
+		(pin ""
+			(uuid "cba1e3be-f4b3-4f62-b476-d203c16b1179")
+		)
+		(pin "3"
+			(uuid "6ff0d485-cbb4-4718-9683-5e3305010c77")
+		)
+		(pin "0"
+			(uuid "7c629e0f-25ec-43a3-81ba-9a3ac5e0e17f")
+		)
+		(pin "25"
+			(uuid "0ec0c01e-5c3a-40f2-997d-4c197dae7b57")
+		)
+		(pin "32"
+			(uuid "b248bfc7-d823-41da-8f90-ad41c2224346")
+		)
+		(pin "14"
+			(uuid "d2c5d27f-937e-4ee1-a5b8-8318970a4ffb")
+		)
+		(pin ""
+			(uuid "cb3a0477-fda4-4c17-966c-1599096a8ee7")
+		)
+		(pin "RST"
+			(uuid "68ca811f-31f3-4909-be6f-d77fedbf18fb")
+		)
+		(pin "21"
+			(uuid "06eeb49e-557f-4cd8-b5d6-4d5d85cdd5a0")
+		)
+		(pin "VN"
+			(uuid "a5159417-7477-4ed0-b2c7-5564a75df165")
+		)
+		(pin ""
+			(uuid "c8815259-7ad6-45bd-bda2-2db36e3710eb")
+		)
+		(pin "18"
+			(uuid "21273a0b-d676-43d2-8c4f-e85a7c561763")
+		)
+		(pin "19"
+			(uuid "35699362-cb85-4310-9200-8317b303d513")
+		)
+		(pin "35"
+			(uuid "a7bf1046-229d-403c-bc3e-724044112fe6")
+		)
+		(pin ""
+			(uuid "61f32c18-c4cc-4e1b-945c-e00787585e14")
+		)
+		(pin "23"
+			(uuid "83a7ac47-b4c7-4dfd-9874-40fa530ddb01")
+		)
+		(pin "VP"
+			(uuid "fa8cf7df-15a8-4699-a3e8-38cc519d8d2f")
+		)
+		(pin "22"
+			(uuid "e696d862-057d-4047-9a97-27bfa6b7bb0e")
+		)
+		(pin ""
+			(uuid "23c71deb-02e6-470e-9a92-48ed036b26d5")
 		)
 		(instances
 			(project ""
 				(path "/70e9a7f1-6fb2-48d3-8eeb-4403e7889f3c"
-					(reference "DustSensor1")
+					(reference "Lilygo_T-Beam3")
 					(unit 1)
 				)
 			)
