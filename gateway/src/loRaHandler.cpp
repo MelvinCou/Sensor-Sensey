@@ -1,7 +1,7 @@
 #include "loRaHandler.h"
 
 #include <RadioLib.h>
-#include <message.pb.h>
+#include <data.pb.h>
 #include <pb_decode.h>
 
 #include <Logger.hpp>
@@ -34,6 +34,8 @@ void setFlag(void) {
   receivedFlag = true;
 }
 
+void printReception(const Data& data);
+
 void loRaBegin() {
   // initialize SX1262 with default settings
   Serial.print(F("[SX1262] Initializing ... "));
@@ -65,11 +67,11 @@ void loRaBegin() {
   }
 }
 
-uint8_t buffer[Message_size * 2];
-Message decoded = Message_init_zero;
+uint8_t buffer[Data_size + 1];
+Data decoded = Data_init_zero;
 pb_istream_t istream;
 
-void onReceive() {
+void receive() {
   // check if the flag is set
   if (receivedFlag) {
     // reset flag
@@ -82,20 +84,13 @@ void onReceive() {
       // packet was successfully received
       LOG_DEBUG("[SX1262] Received packet!\n");
 
-      // print data of the packet
+      // decode data
       istream = pb_istream_from_buffer(buffer, packetSize);
-      if (!pb_decode(&istream, &Message_msg, &decoded)) {
+      if (!pb_decode(&istream, &Data_msg, &decoded)) {
         LOG_ERROR("Error during pb_decode: %s\n", istream.errmsg);
         return;
       }
-      LOG_INFO("[SX1262] Data: str: %s ; kind: %d\n", decoded.str, decoded.kind);
-      // print RSSI (Received Signal Strength Indicator)
-      LOG_DEBUG("[SX1262] RSSI:\t\t %.2f dBm\n", radio.getRSSI());
-      // print SNR (Signal-to-Noise Ratio)
-      LOG_DEBUG("[SX1262] SNR:\t\t %.2f dB\n", radio.getSNR());
-      // print frequency error
-      LOG_DEBUG("[SX1262] Frequency error:\t %.2f Hz\n", radio.getFrequencyError());
-
+      printReception(decoded);
     } else if (state == RADIOLIB_ERR_CRC_MISMATCH) {
       // packet was received, but is malformed
       LOG_ERROR("CRC error!");
@@ -105,4 +100,21 @@ void onReceive() {
       LOG_ERROR("failed, code %d", state);
     }
   }
+}
+
+void printReception(const Data& data) {
+#if LOG_LEVEL >= LOG_LEVEL_INFO
+  LOG_INFO("[SX1262] Data: sensor_id: %s, sensor_pin: %d\n", decoded.sensor_id, decoded.sensor_pin);
+  for (size_t i = 0; i < data.values_count; i++) {
+    LOG_INFO("[SX1262]\t %d value_type: %s, value: %s\n", i, decoded.values[i].value_type, decoded.values[i].value);
+  }
+#endif
+#if LOG_LEVEL >= LOG_LEVEL_DEBUG
+  // print RSSI (Received Signal Strength Indicator)
+  LOG_DEBUG("[SX1262] RSSI:\t\t %.2f dBm\n", radio.getRSSI());
+  // print SNR (Signal-to-Noise Ratio)
+  LOG_DEBUG("[SX1262] SNR:\t\t %.2f dB\n", radio.getSNR());
+  // print frequency error
+  LOG_DEBUG("[SX1262] Frequency error:\t %.2f Hz\n", radio.getFrequencyError());
+#endif
 }

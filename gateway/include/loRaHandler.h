@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @brief Setup LoRa
+ */
 void loRaBegin();
 
-void onReceive();
+/**
+ * @brief Handle a connection (must be in a for loop)
+ */
+void receive();

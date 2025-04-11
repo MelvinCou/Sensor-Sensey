@@ -7,4 +7,4 @@ void setup() {
   loRaBegin();
 }
 
-void loop() { onReceive(); }
+void loop() { receive(); }
