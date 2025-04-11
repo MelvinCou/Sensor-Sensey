@@ -1,7 +1,6 @@
 #include "loRaHandler.h"
 
 #include <LoRa.h>
-#include <message.pb.h>
 #include <pb_encode.h>
 
 #include <Logger.hpp>
@@ -25,12 +24,12 @@ void loRaBegin() {
   */
 }
 
-uint8_t buffer[Message_size];
+uint8_t buffer[Data_size];
 pb_ostream_t ostream;
 
-void sendMessage(Message message) {
-  ostream = pb_ostream_from_buffer(buffer, Message_size);
-  if (!pb_encode(&ostream, &Message_msg, &message)) {
+void sendMessage(const Data& message) {
+  ostream = pb_ostream_from_buffer(buffer, sizeof(buffer));
+  if (!pb_encode(&ostream, &Data_msg, &message)) {
     // error
     LOG_ERROR("Error during pb_encode: %s\n", ostream.errmsg);
   }

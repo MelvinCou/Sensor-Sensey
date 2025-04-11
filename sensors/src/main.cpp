@@ -1,5 +1,5 @@
+#include "data.pb.h"
 #include "loRaHandler.h"
-#include "message.pb.h"
 #include "t-beam/boards.h"
 
 int counter = 0;
@@ -10,11 +10,14 @@ void setup() {
   delay(1500);
 }
 
-Message original = Message_init_zero;
+Data original = Data_init_zero;
 
 void loop() {
-  original.kind = SensorKind::SensorKind_BMP280;
-  strcpy(original.str, "coucou sdfsfsdf_");
+  original.sensor_pin = 7;
+  strcpy(original.sensor_id, "esp32-1234");
+  original.values_count = 1;
+  strcpy(original.values[0].value_type, "temperature");
+  strcpy(original.values[0].value, "30");
 
   sendMessage(original);
   delay(5000);
