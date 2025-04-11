@@ -16,11 +16,16 @@ Data original = Data_init_zero;
 
 void loop() {
   original.sensor_pin = 7;
-  strcpy(original.sensor_id, "esp32-1234");
+  strcpy(original.sensor_id, SENSOR_COM_ID);
   original.values_count = 1;
   strcpy(original.values[0].value_type, "temperature");
   strcpy(original.values[0].value, "30");
-
+  
   sendMessage(original);
+
+  delay(1000);
+  Data message = readDustSensorData();
+  sendMessage(message);
+
   delay(5000);
 }
