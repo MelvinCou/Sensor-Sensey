@@ -90,8 +90,8 @@
 #define RADIO_DIO9_PIN 33
 
 // DUST PINS
-#define DUST_AOUT_PIN 2
-#define DUST_ILED_PIN 13
+#define DUST_AOUT_PIN 13
+#define DUST_ILED_PIN 14
 
 // VCC PINS
 #define VCC_3V 3.3
