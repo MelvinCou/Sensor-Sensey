@@ -1403,7 +1403,7 @@
 			)
 		)
 	)
-	(global_label "PIN_2"
+	(global_label "PIN_13"
 		(shape input)
 		(at 148.59 24.13 90)
 		(fields_autoplaced yes)
@@ -1413,9 +1413,9 @@
 			)
 			(justify left)
 		)
-		(uuid "63fdf9dc-893b-4a60-94ec-177ef6ee2da1")
+		(uuid "816e210d-f4d9-4885-961e-8baf88a5917c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 148.59 15.7624 90)
+			(at 148.59 14.5529 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1425,9 +1425,9 @@
 			)
 		)
 	)
-	(global_label "PIN_2"
+	(global_label "PIN_14"
 		(shape input)
-		(at 36.83 62.23 180)
+		(at 36.83 54.61 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1435,9 +1435,9 @@
 			)
 			(justify right)
 		)
-		(uuid "785f4a61-ba6c-4995-9c42-40b853f4c584")
+		(uuid "d047d232-b8df-4fff-91b6-9e8257c0b6c6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 28.4624 62.23 0)
+			(at 27.2529 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1447,7 +1447,7 @@
 			)
 		)
 	)
-	(global_label "PIN_13"
+	(global_label "PIN_14"
 		(shape input)
 		(at 151.13 24.13 90)
 		(fields_autoplaced yes)
@@ -1457,7 +1457,7 @@
 			)
 			(justify left)
 		)
-		(uuid "f5832bc3-d204-4e72-9811-21301fd02c48")
+		(uuid "e79b4f0a-4bd7-478c-b100-519edf289b8b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 151.13 14.5529 90)
 			(effects
