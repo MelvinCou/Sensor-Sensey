@@ -3,29 +3,19 @@
 #include <message.pb.h>
 #include <HardwareSerial.h>
 #include <Logger.hpp>
-
-// Allocating the dust sensor's pins on ESP 32 board
-const int AOUT_PIN = 2;
-const int ILED_PIN = 13;
-// IMPORTANT: This implementation of the dust sensor is based on 3.3V
+#include <t-beam/utilities.h>
 
 Message readDustSensorData() {
-  // Setup sensor data reading
-  // TODO: Maybe only do this part once ?
-  pinMode(ILED_PIN, OUTPUT);
-  delay(280);
-  LOG_INFO("Dust Sensor set up !\n");
-
   // Activate ILED
-  digitalWrite(ILED_PIN, HIGH);
+  digitalWrite(DUST_ILED_PIN, HIGH);
   delayMicroseconds(280);
 
   // Convert analogue value to voltage
-  int analogValue = analogRead(AOUT_PIN);  
-  float voltage = analogValue * (3.3 / 4095.0); 
+  int analogValue = analogRead(DUST_AOUT_PIN);  
+  float voltage = analogValue * (VCC_3V / 4095.0); 
 
   // Deactivate ILED
-  digitalWrite(ILED_PIN, LOW);
+  digitalWrite(DUST_ILED_PIN, LOW);
 
   // Print value
   LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
@@ -35,4 +25,10 @@ Message readDustSensorData() {
   message.kind = SensorKind::SensorKind_DustSensor;
   snprintf(message.str, sizeof(message.str), "%.2f", voltage);
   return message;
+}
+
+void setUpDustSensor() {
+    pinMode(DUST_ILED_PIN, OUTPUT);
+    delay(280);
+    LOG_INFO("Dust Sensor set up !\n");
 }
