@@ -1,6 +1,7 @@
 #include "data.pb.h"
 #include "loRaHandler.h"
 #include "t-beam/boards.h"
+#include "dustSensor.h"
 
 int counter = 0;
 
