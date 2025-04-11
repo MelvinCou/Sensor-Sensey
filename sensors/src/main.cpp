@@ -7,6 +7,7 @@ int counter = 0;
 
 void setup() {
   setupBoards();
+  setUpDustSensor();
   // When the power is turned on, a delay is required.
   delay(1500);
 }

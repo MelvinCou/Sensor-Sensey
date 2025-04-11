@@ -89,6 +89,14 @@
 // LR1121 Only
 #define RADIO_DIO9_PIN 33
 
+// DUST PINS
+#define DUST_AOUT_PIN 2
+#define DUST_ILED_PIN 13
+
+// VCC PINS
+#define VCC_3V 3.3
+#define VCC_5V 5
+
 #define BOARD_LED 4
 #define LED_ON LOW
 #define LED_OFF HIGH
