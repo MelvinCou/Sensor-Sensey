@@ -99,7 +99,7 @@
 #define DUST_AOUT_PIN 13
 #define DUST_ILED_PIN 14
 
-// VCC PINS
+// VCC References
 #define VCC_3V 3.3
 #define VCC_5V 5
 
