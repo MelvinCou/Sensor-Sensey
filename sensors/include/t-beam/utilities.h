@@ -49,6 +49,8 @@
 // TODO : Change PIN number according to sensor community registered pin
 #define DUST_SENSOR_COM_PIN 8
 #define DUST_SENSOR_COM_TYPE "Dust"
+#define PRESSURE_SENSOR_COM_PIN 9
+#define PRESSURE_SENSOR_COM_TYPE "Pressure"
 
 #define UNUSED_PIN (0)
 
@@ -320,8 +322,9 @@
 
 #endif  // T3_S3_V1_2_SX1262
 
-#define I2C_SDA 18
-#define I2C_SCL 17
+// REMOVING THIS ELSE IT SEEMS TO OVERRIDE OTHER VALUES DEFINED FOR i2C_SDA AND I2C_SCL
+// #define I2C_SDA 18
+// #define I2C_SCL 17
 #define OLED_RST UNUSED_PIN
 
 #define RADIO_SCLK_PIN 5
