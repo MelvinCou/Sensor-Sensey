@@ -1,9 +1,11 @@
 #include "dustSensor.h"
 
-#include "data.pb.h"
 #include <HardwareSerial.h>
-#include <Logger.hpp>
 #include <t-beam/utilities.h>
+
+#include <Logger.hpp>
+
+#include "data.pb.h"
 
 Data message = Data_init_zero;
 
@@ -13,8 +15,8 @@ Data readDustSensorData() {
   delayMicroseconds(280);
 
   // Convert analogue value to voltage
-  int analogValue = analogRead(DUST_AOUT_PIN);  
-  float voltage = analogValue * (VCC_3V / 4095.0); 
+  int analogValue = analogRead(DUST_AOUT_PIN);
+  float voltage = analogValue * (VCC_3V / 4095.0);
 
   // Deactivate ILED
   digitalWrite(DUST_ILED_PIN, LOW);
@@ -31,6 +33,4 @@ Data readDustSensorData() {
   return message;
 }
 
-void setUpDustSensor() {
-    pinMode(DUST_ILED_PIN, OUTPUT);
-}
+void setUpDustSensor() { pinMode(DUST_ILED_PIN, OUTPUT); }

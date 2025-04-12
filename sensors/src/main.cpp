@@ -1,7 +1,7 @@
 #include "data.pb.h"
+#include "dustSensor.h"
 #include "loRaHandler.h"
 #include "t-beam/boards.h"
-#include "dustSensor.h"
 
 int counter = 0;
 
@@ -20,7 +20,7 @@ void loop() {
   original.values_count = 1;
   strcpy(original.values[0].value_type, "temperature");
   strcpy(original.values[0].value, "30");
-  
+
   sendMessage(original);
 
   delay(1000);
