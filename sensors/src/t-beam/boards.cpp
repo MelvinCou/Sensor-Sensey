@@ -28,11 +28,11 @@
 static DevInfo_t devInfo;
 
 #ifdef HAS_GPS
-static bool find_gps = false;
+static bool found_gps = false;
 String gps_model = "None";
 #endif
 
-uint32_t deviceOnline = 0x00;
+uint32_t deviceOnline = 0x00;  // set all bits to 0
 
 #ifdef HAS_PMU
 XPowersLibInterface *PMU = NULL;
@@ -401,6 +401,7 @@ void setupBoards(bool disable_u8g2) {
 
 #ifdef I2C_SDA
   Wire.begin(I2C_SDA, I2C_SCL);
+  // Wire.setClock(100000); // Probably useless
   Serial.println("Scan Wire...");
   scanDevices(&Wire);
 #endif
@@ -486,10 +487,10 @@ void setupBoards(bool disable_u8g2) {
 
 #if defined(T_BEAM_S3_SUPREME) || defined(T_BEAM_2W)
   // T-Beam v1.2 skips L76K
-  find_gps = beginGPS();
+  found_gps = beginGPS();
 #endif
   uint32_t baudrate[] = {9600, 19200, 38400, 57600, 115200, 230400, 460800, 921600, 4800};
-  if (!find_gps) {
+  if (!found_gps) {
     // Restore factory settings
     for (int i = 0; i < sizeof(baudrate) / sizeof(baudrate[0]); ++i) {
       Serial.printf("Update baudrate : %u\n", baudrate[i]);
@@ -497,7 +498,7 @@ void setupBoards(bool disable_u8g2) {
       if (recoveryGPS()) {
         Serial.println("UBlox GNSS init succeeded, using UBlox GNSS Module\n");
         gps_model = "UBlox";
-        find_gps = true;
+        found_gps = true;
         break;
       }
     }
@@ -505,7 +506,7 @@ void setupBoards(bool disable_u8g2) {
     gps_model = "L76K";
   }
 
-  if (find_gps) {
+  if (found_gps) {
     deviceOnline |= GPS_ONLINE;
   }
 
@@ -529,7 +530,7 @@ void printResult(bool radio_online) {
 
 #ifdef HAS_GPS
   Serial.print("GPS          : ");
-  Serial.println((find_gps) ? "+" : "-");
+  Serial.println((found_gps) ? "+" : "-");
 #endif
 
 #endif
@@ -570,24 +571,28 @@ void scanDevices(TwoWire *w) {
       nDevices++;
       switch (addr) {
         case 0x77:
+          Serial.println("\tFound BMP280 Sensor on address 0x77!");
+          deviceOnline |=
+              BMP280_ONLINE;  // sets 8th bit of deviceOnline to 1 with bitwise op => BMP280_ONLINE = BV(8) = bitvalue(8) = ..0100..
+          break;
         case 0x76:
-          Serial.println("\tFind BMX280 Sensor!");
-          deviceOnline |= BME280_ONLINE;
+          Serial.println("\tFound BMP280 Sensor on address 0x76!");
+          deviceOnline |= BMP280_ONLINE;
           break;
         case 0x34:
-          Serial.println("\tFind AXP192/AXP2101 PMU!");
+          Serial.println("\tFound AXP192/AXP2101 PMU!");
           deviceOnline |= POWERMANAGE_ONLINE;
           break;
         case 0x3C:
-          Serial.println("\tFind SSD1306/SH1106 dispaly!");
+          Serial.println("\tFound SSD1306/SH1106 dispaly!");
           deviceOnline |= DISPLAY_ONLINE;
           break;
         case 0x51:
-          Serial.println("\tFind PCF8563 RTC!");
+          Serial.println("\tFound PCF8563 RTC!");
           deviceOnline |= PCF8563_ONLINE;
           break;
         case 0x1C:
-          Serial.println("\tFind QMC6310 MAG Sensor!");
+          Serial.println("\tFound QMC6310 MAG Sensor!");
           deviceOnline |= QMC6310_ONLINE;
           break;
         default:
