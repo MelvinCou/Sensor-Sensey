@@ -49,6 +49,8 @@
 // TODO : Change PIN number according to sensor community registered pin
 #define DUST_SENSOR_COM_PIN 8
 #define DUST_SENSOR_COM_TYPE "Dust"
+#define SOUND_SENSOR_COM_PIN 10
+#define SOUND_SENSOR_COM_TYPE "Sound"
 
 // Pressure sensor
 #define PRESSURE_SENSOR_COM_PIN 9
@@ -104,6 +106,12 @@
 // DUST PINS
 #define DUST_AOUT_PIN 13
 #define DUST_ILED_PIN 14
+
+// SOUND PINS
+#define SOUND_I2S_WS 25
+#define SOUND_I2S_SD 32
+#define SOUND_I2S_SCK 33
+#define I2S_PORT I2S_NUM_0
 
 // VCC References
 #define VCC_3V 3.3
