@@ -46,16 +46,13 @@ void setupPressureSensor() {
 Data readPressureSensorData() {
   // Get data
   float temperature = bmp.readTemperature();
-  float pressure = bmp.readPressure() / 100.0F;  // Convert Pa to hPa
-  float altitude = bmp.readAltitude(1017);       // Adjusted to local sea level pressure
+  float pressure = bmp.readPressure() / 100.0F;              // Convert Pa to hPa
+  float altitude = bmp.readAltitude(LOCAL_ALTITUDE_OFFSET);  // Adjusted to local sea level pressure - Offset is defined in utilities.h
 
   // Print data
   LOG_INFO("Temperature = %.2f °C\n", temperature);
   LOG_INFO("Pressure = %.2f hPa\n", pressure);
   LOG_INFO("Approx Altitude = %.2f m\n", altitude);
-
-  // Wait
-  delay(2000);
 
   // Create and return message
   pressureMessage.sensor_pin = PRESSURE_SENSOR_COM_PIN;

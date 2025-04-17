@@ -49,8 +49,11 @@
 // TODO : Change PIN number according to sensor community registered pin
 #define DUST_SENSOR_COM_PIN 8
 #define DUST_SENSOR_COM_TYPE "Dust"
+
+// Pressure sensor
 #define PRESSURE_SENSOR_COM_PIN 9
 #define PRESSURE_SENSOR_COM_TYPE "Pressure"
+#define LOCAL_ALTITUDE_OFFSET 1017
 
 #define UNUSED_PIN (0)
 
