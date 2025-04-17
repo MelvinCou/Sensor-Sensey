@@ -397,7 +397,7 @@ void setupBoards(bool disable_u8g2) {
   SPI.begin();
 #endif
 
-  loRaBegin();
+LoRaHandler::loRaBegin();
 
 #ifdef I2C_SDA
   Wire.begin(I2C_SDA, I2C_SCL);

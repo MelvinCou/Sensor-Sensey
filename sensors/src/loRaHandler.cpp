@@ -4,10 +4,11 @@
 #include <pb_encode.h>
 
 #include <Logger.hpp>
+#include "data.pb.h"
 
 #include "t-beam/utilities.h"
 
-void loRaBegin() {
+void LoRaHandler::loRaBegin() {
   LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DIO0_PIN);
   if (!LoRa.begin(CONFIG_RADIO_FREQ)) {
     LOG_ERROR("Starting LoRa failed!\n");
@@ -24,12 +25,29 @@ void loRaBegin() {
   */
 }
 
+Data data = Data_init_default;
 uint8_t buffer[Data_size];
 pb_ostream_t ostream;
+#define MAX_VALUES 3
 
-void sendMessage(const Data& message) {
+void LoRaHandler::addValueToSend(const Sensor& sensor) {
+  const size_t& size = sensor.getValuesCount();
+  if(size + data.values_count > MAX_VALUES) {
+    LOG_ERROR("Overflow of values : %d (size) + %d (values_count) > %d (MAX_VALUES)\n", size, data.values_count, MAX_VALUES);
+    return;
+  }
+  const RawValue* values = sensor.getValues();
+  for (size_t i = 0; i < size; i++)
+  {
+    strcpy(data.values[data.values_count].value_type, values[i].key);
+    strcpy(data.values[data.values_count].value, values[i].value);
+    data.values_count++;
+  }
+}
+
+void LoRaHandler::send() {
   ostream = pb_ostream_from_buffer(buffer, sizeof(buffer));
-  if (!pb_encode(&ostream, &Data_msg, &message)) {
+  if (!pb_encode(&ostream, &Data_msg, &data)) {
     // error
     LOG_ERROR("Error during pb_encode: %s\n", ostream.errmsg);
   }
@@ -42,4 +60,5 @@ void sendMessage(const Data& message) {
   if (LoRa.endPacket() == 0) {
     LOG_ERROR("Failed to send packet\n");
   }
+  data.values_count = 0;
 }

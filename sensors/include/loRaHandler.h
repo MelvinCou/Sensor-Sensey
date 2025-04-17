@@ -1,7 +1,12 @@
 #pragma once
 
-#include "data.pb.h"
+#include "sensor/sensor.h"
 
-void loRaBegin();
+namespace LoRaHandler
+{
+    void loRaBegin();
 
-void sendMessage(const Data& message);
+    void addValueToSend(const Sensor& sensor);
+
+    void send();
+} // namespace LoRaHandler

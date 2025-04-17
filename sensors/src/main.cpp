@@ -1,48 +1,28 @@
 #include <Logger.hpp>
 
-#include "data.pb.h"
-#include "dustSensor.h"
+#include "sensor/dustSensor.h"
 #include "loRaHandler.h"
-#include "pressureSensor.h"
+#include "sensor/pressureSensor.h"
 #include "t-beam/boards.h"
 
 int counter = 0;
+DustSensor dust;
+PressureSensor pressure;
 
 void setup() {
   LOG_INFO("Setting up boards...\n");
   setupBoards();
 
-  LOG_INFO("Setting up dust sensor...\n");
-  setUpDustSensor();
-
-  LOG_INFO("Setting up pressure sensor...\n");
-  setupPressureSensor();
-
   // When the power is turned on, a delay is required.
   delay(1500);
 }
 
-Data original = Data_init_zero;
-
 void loop() {
-  // Example message
-  original.sensor_pin = 7;
-  strcpy(original.sensor_id, SENSOR_COM_ID);
-  original.values_count = 1;
-  strcpy(original.values[0].value_type, "temperature");
-  strcpy(original.values[0].value, "30");
+  dust.sense();
+  LoRaHandler::addValueToSend(dust);
+  pressure.sense();
+  LoRaHandler::addValueToSend(pressure);
 
-  sendMessage(original);
-
-  // Dust message
-  delay(1000);
-  Data message = readDustSensorData();
-  sendMessage(message);
-
-  // Pressure message
-  delay(1000);
-  Data pressureSensorMessage = readPressureSensorData();
-  sendMessage(pressureSensorMessage);
-
+  LoRaHandler::send();
   delay(5000);
 }
