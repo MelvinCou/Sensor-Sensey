@@ -401,7 +401,6 @@ void setupBoards(bool disable_u8g2) {
 
 #ifdef I2C_SDA
   Wire.begin(I2C_SDA, I2C_SCL);
-  // Wire.setClock(100000); // Probably useless
   Serial.println("Scan Wire...");
   scanDevices(&Wire);
 #endif
