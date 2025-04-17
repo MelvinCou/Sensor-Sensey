@@ -33,4 +33,4 @@ Data readDustSensorData() {
   return message;
 }
 
-void setUpDustSensor() { pinMode(DUST_ILED_PIN, OUTPUT); }
+void setupDustSensor() { pinMode(DUST_ILED_PIN, OUTPUT); }

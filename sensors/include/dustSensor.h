@@ -4,4 +4,4 @@
 
 Data readDustSensorData();
 
-void setUpDustSensor();
+void setupDustSensor();
