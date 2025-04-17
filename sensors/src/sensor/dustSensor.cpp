@@ -5,13 +5,15 @@
 
 #include <Logger.hpp>
 
-DustSensor::DustSensor()
-{
+#define ID_ANALOG_VOLTAGE 0
+#define ID_VOLTAGE 1
+
+DustSensor::DustSensor() {
   m_valuesCount = 2;
   m_values = new RawValue[m_valuesCount];
 
-  strcpy(m_values[0].key, "analogValue");
-  strcpy(m_values[1].key, "voltage");
+  strcpy(m_values[ID_ANALOG_VOLTAGE].key, "analogValue");
+  strcpy(m_values[ID_VOLTAGE].key, "voltage");
 
   pinMode(DUST_ILED_PIN, OUTPUT);
 }
@@ -30,6 +32,6 @@ void DustSensor::sense() {
   // Print value
   LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
 
-  snprintf(m_values[0].value, sizeof(m_values[0].value), "%d", analogValue);
-  snprintf(m_values[1].value, sizeof(m_values[1].value), "%.2f", voltage);
+  snprintf(m_values[ID_ANALOG_VOLTAGE].value, sizeof(m_values[ID_ANALOG_VOLTAGE].value), "%d", analogValue);
+  snprintf(m_values[ID_VOLTAGE].value, sizeof(m_values[ID_VOLTAGE].value), "%.2f", voltage);
 }

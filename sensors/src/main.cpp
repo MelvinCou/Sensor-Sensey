@@ -1,17 +1,17 @@
 #include <Logger.hpp>
 
-#include "sensor/dustSensor.h"
 #include "loRaHandler.h"
+#include "sensor/dustSensor.h"
 #include "sensor/pressureSensor.h"
 #include "t-beam/boards.h"
 
-int counter = 0;
 DustSensor dust;
 PressureSensor pressure;
 
 void setup() {
   LOG_INFO("Setting up boards...\n");
   setupBoards();
+  pressure.begin();
 
   // When the power is turned on, a delay is required.
   delay(1500);
