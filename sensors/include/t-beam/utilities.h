@@ -53,6 +53,7 @@
 // Pressure sensor
 #define PRESSURE_SENSOR_COM_PIN 9
 #define PRESSURE_SENSOR_COM_TYPE "Pressure"
+#define PRESSURE_SENSOR_I2C_ADDRESS 0x76
 #define LOCAL_ALTITUDE_OFFSET 1017
 
 #define UNUSED_PIN (0)

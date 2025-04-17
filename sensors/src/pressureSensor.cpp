@@ -17,22 +17,23 @@ Data pressureMessage = Data_init_zero;
 
 void setupPressureSensor() {
   // Initialize sensor
-  bool found = bmp.begin(0x76);  // Default is I2C address 0x76 when SDO is floating (I2C mode), 0x77 when plugged on ground
+  bool found = bmp.begin(PRESSURE_SENSOR_I2C_ADDRESS);  // Default is I2C address 0x76 when SDO is floating (I2C
+                                                        // mode), 0x77 when plugged on ground
   if (!found) {
     found = bmp.begin(0x77);
     if (found) LOG_INFO("BMP280 found at 0x77\n");
   } else {
-    LOG_INFO("BMP280 found at 0x76\n");
+    LOG_INFO("BMP280 found at %s\n", PRESSURE_SENSOR_I2C_ADDRESS);
   }
   if (!found) LOG_ERROR("BMP280 not found!\n");
 
   // Print chip id
-  Wire.beginTransmission(0x76);
-  Wire.write(0xD0);
-  Wire.endTransmission();
-  Wire.requestFrom(0x76, 1);
-  uint8_t chipID = Wire.read();
-  Serial.printf("Chip ID: 0x%02X\n", chipID);  // 0x58 is BMP (ours), 0x60 is BME (fake)
+  Wire.beginTransmission(PRESSURE_SENSOR_I2C_ADDRESS);  // start writing to sensor
+  Wire.write(0xD0);                                     // sends the register address we want to lookup to the sensor
+  Wire.endTransmission();                               // end writing
+  Wire.requestFrom(PRESSURE_SENSOR_I2C_ADDRESS, 1);     // setup read settings (address, number of bytes)
+  uint8_t chipID = Wire.read();                         // read the next byte
+  Serial.printf("Chip ID: 0x%02X\n", chipID);           // 0x58 is BMP (ours), 0x60 is BME (fake)
 
   // Optional : config
   // bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,    // Operating mode
