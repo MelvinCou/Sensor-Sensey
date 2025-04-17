@@ -1311,9 +1311,71 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "x"
+		(exclude_from_sim no)
+		(at 84.074 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3fd81fee-e762-47b5-af25-c1001bec559e")
+	)
+	(text "x"
+		(exclude_from_sim no)
+		(at 35.306 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "948c6087-6687-4edc-8522-722a77a41d5f")
+	)
+	(text "x"
+		(exclude_from_sim no)
+		(at 128.016 73.914 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c86c1f25-d0f5-42d5-b8c4-838fa1a653c6")
+	)
+	(text "x"
+		(exclude_from_sim no)
+		(at 128.016 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ff133d3b-10de-411b-bd15-1db2f61cb789")
+	)
+	(junction
+		(at 109.22 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5956d394-74a8-41f8-809f-d12434b20d51")
+	)
+	(junction
+		(at 106.68 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5c42eb35-308b-4d11-81be-7b986530fadf")
+	)
 	(wire
 		(pts
-			(xy 123.19 24.13) (xy 123.19 46.99)
+			(xy 109.22 46.99) (xy 82.55 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0372d239-ebe5-4627-8c74-2166082ac9cf")
+	)
+	(wire
+		(pts
+			(xy 119.38 22.86) (xy 119.38 46.99)
 		)
 		(stroke
 			(width 0)
@@ -1323,7 +1385,17 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 24.13) (xy 143.51 24.13)
+			(xy 101.6 58.42) (xy 82.55 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a42d0d0-df76-4766-a7b0-f59e905d4642")
+	)
+	(wire
+		(pts
+			(xy 119.38 22.86) (xy 143.51 22.86)
 		)
 		(stroke
 			(width 0)
@@ -1333,23 +1405,53 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 46.99) (xy 82.55 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "41320f55-c32d-433b-846d-8b32775712b8")
-	)
-	(wire
-		(pts
-			(xy 82.55 43.18) (xy 116.84 43.18)
+			(xy 82.55 43.18) (xy 106.68 43.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "42069d1f-2c9c-4d3b-a3e5-e6242d72a126")
+	)
+	(wire
+		(pts
+			(xy 129.54 66.04) (xy 104.14 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4539e312-8cb9-4a66-bec4-4bf8ca5e362a")
+	)
+	(wire
+		(pts
+			(xy 101.6 68.58) (xy 101.6 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "459e6395-df9e-445e-8168-5179bb564c31")
+	)
+	(wire
+		(pts
+			(xy 104.14 66.04) (xy 104.14 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "607ce246-f853-4cc6-8693-f9413b6287d6")
+	)
+	(wire
+		(pts
+			(xy 106.68 63.5) (xy 106.68 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65288f7c-c8e7-4ff3-97a2-a9d2ceeead6a")
 	)
 	(wire
 		(pts
@@ -1363,6 +1465,36 @@
 	)
 	(wire
 		(pts
+			(xy 143.51 22.86) (xy 143.51 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7fab4970-565b-4633-b4ac-7abd5f304f43")
+	)
+	(wire
+		(pts
+			(xy 109.22 46.99) (xy 119.38 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a65fb34b-39b3-48b0-b58b-b44c29d7576b")
+	)
+	(wire
+		(pts
+			(xy 104.14 54.61) (xy 82.55 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8370e8b-35be-42e5-bba8-fdafc5ff9299")
+	)
+	(wire
+		(pts
 			(xy 146.05 20.32) (xy 146.05 24.13)
 		)
 		(stroke
@@ -1370,6 +1502,56 @@
 			(type default)
 		)
 		(uuid "c87b26e5-745e-4490-a3aa-b884a86073d7")
+	)
+	(wire
+		(pts
+			(xy 106.68 43.18) (xy 116.84 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb31a27a-877a-475a-a26e-9398f4a0bb47")
+	)
+	(wire
+		(pts
+			(xy 129.54 63.5) (xy 106.68 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1e77531-fc64-443f-ab41-1db8a09b2a6e")
+	)
+	(wire
+		(pts
+			(xy 109.22 60.96) (xy 109.22 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9c9c422-ad99-4f01-a0f1-ce241c47cfcf")
+	)
+	(wire
+		(pts
+			(xy 129.54 60.96) (xy 109.22 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5127e27-43e5-4c6a-b62b-bc8f9b3ba3e5")
+	)
+	(wire
+		(pts
+			(xy 129.54 68.58) (xy 101.6 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f82628d6-e53c-4c54-b359-f3a506373098")
 	)
 	(wire
 		(pts
@@ -1571,7 +1753,7 @@
 	)
 	(symbol
 		(lib_id "sensor-sensei:BMP280")
-		(at 17.78 93.98 180)
+		(at 135.89 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1579,24 +1761,26 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6a6b0768-4b31-4d57-8375-a7e5a8556f4c")
-		(property "Reference" "BMP1"
-			(at 17.78 73.66 0)
+		(property "Reference" "BMP280"
+			(at 140.97 66.6749 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "~"
-			(at 17.78 76.2 0)
+			(at 140.97 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 17.78 93.98 0)
+			(at 135.89 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1605,7 +1789,7 @@
 			)
 		)
 		(property "Datasheet" "https://electro-proto.fr/index.php?controller=attachment&id_attachment=5"
-			(at 17.78 93.98 0)
+			(at 135.89 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1614,7 +1798,7 @@
 			)
 		)
 		(property "Description" "Capteur de température / humidité numérique"
-			(at 17.78 93.98 0)
+			(at 135.89 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1643,7 +1827,7 @@
 		(instances
 			(project ""
 				(path "/70e9a7f1-6fb2-48d3-8eeb-4403e7889f3c"
-					(reference "BMP1")
+					(reference "BMP280")
 					(unit 1)
 				)
 			)
@@ -1651,7 +1835,7 @@
 	)
 	(symbol
 		(lib_id "sensor-sensei:INMP441")
-		(at 111.76 64.77 0)
+		(at 105.41 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1660,7 +1844,7 @@
 		(fields_autoplaced yes)
 		(uuid "72571c50-9a1a-4e69-abd2-34041db9292a")
 		(property "Reference" "INMP1"
-			(at 111.76 63.5 0)
+			(at 105.41 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1668,7 +1852,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 111.76 66.04 0)
+			(at 105.41 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1676,7 +1860,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 111.76 64.77 0)
+			(at 105.41 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1685,7 +1869,7 @@
 			)
 		)
 		(property "Datasheet" "https://dronebotworkshop.com/esp32-i2s"
-			(at 111.76 64.77 0)
+			(at 105.41 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1694,7 +1878,7 @@
 			)
 		)
 		(property "Description" "Micro (capteur de bruit)"
-			(at 111.76 64.77 0)
+			(at 105.41 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
