@@ -4,8 +4,8 @@
 #include <pb_encode.h>
 
 #include <Logger.hpp>
-#include "data.pb.h"
 
+#include "data.pb.h"
 #include "t-beam/utilities.h"
 
 void LoRaHandler::loRaBegin() {
@@ -32,13 +32,14 @@ pb_ostream_t ostream;
 
 void LoRaHandler::addValueToSend(const Sensor& sensor) {
   const size_t& size = sensor.getValuesCount();
-  if(size + data.values_count > MAX_VALUES) {
+  if (size + data.values_count > MAX_VALUES) {
     LOG_ERROR("Overflow of values : %d (size) + %d (values_count) > %d (MAX_VALUES)\n", size, data.values_count, MAX_VALUES);
     return;
   }
   const RawValue* values = sensor.getValues();
-  for (size_t i = 0; i < size; i++)
-  {
+  for (size_t i = 0; i < size; i++) {
+    LOG_DEBUG("Adding value_type: %s value: %s\n", values[i].key, values[i].value);
+
     strcpy(data.values[data.values_count].value_type, values[i].key);
     strcpy(data.values[data.values_count].value, values[i].value);
     data.values_count++;
