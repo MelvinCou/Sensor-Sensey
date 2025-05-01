@@ -5,23 +5,23 @@
 #include "sensor/pressureSensor.h"
 #include "t-beam/boards.h"
 
-DustSensor dust;
-PressureSensor pressure;
+DustSensor dustSensor;
+PressureSensor pressureSensor;
 
 void setup() {
   LOG_INFO("Setting up boards...\n");
   setupBoards();
-  pressure.begin();
+  pressureSensor.begin();
 
   // When the power is turned on, a delay is required.
   delay(1500);
 }
 
 void loop() {
-  dust.sense();
-  LoRaHandler::addValueToSend(dust);
-  pressure.sense();
-  LoRaHandler::addValueToSend(pressure);
+  dustSensor.sense();
+  LoRaHandler::addValueToSend(dustSensor);
+  pressureSensor.sense();
+  LoRaHandler::addValueToSend(pressureSensor);
 
   LoRaHandler::send();
   delay(5000);

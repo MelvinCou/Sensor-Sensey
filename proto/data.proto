@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "nanopb.proto";
+option (nanopb_fileopt).long_names = false;
 
 enum ValueType {
   // types for dust sensor
