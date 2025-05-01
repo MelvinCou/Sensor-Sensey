@@ -1,15 +1,37 @@
 syntax = "proto3";
 
+import "nanopb.proto";
+
+enum ValueType {
+  // types for dust sensor
+
+  analogValue = 0;
+  voltage = 1;
+
+  // types for pressure sensor
+
+  temperature = 2;
+  pressure = 3;
+  altitude = 4;
+}
+
 message Value {
-  string value_type = 1;
-  string value = 2;
+  // type of the value
+  ValueType value_type = 1;
+
+  oneof value {
+    // value as an integer
+    int32 as_int = 2;
+    // value as a float
+    float as_float = 3;
+  };
 }
 
 message Data {
   // id from sensor.community
-  string sensor_id = 1;
+  string sensor_id = 1 [(nanopb).max_length = 12];
   // pin depending of sensor type
   uint32 sensor_pin = 2;
   // values ​​captured by the sensor
-  repeated Value values = 3;
+  repeated Value values = 3 [(nanopb).max_count = 3];
 }
