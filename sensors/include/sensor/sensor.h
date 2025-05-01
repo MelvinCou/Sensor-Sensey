@@ -1,15 +1,30 @@
 #pragma once
 
+#include <data.pb.h>
 #include <stddef.h>
+
+// clang-format off
+enum class CValueType : unsigned char {
+  INT,
+  FLOAT
+};
+// clang-format on
 
 /**
  * @brief Value to send to sensor.community
  */
 struct RawValue {
   // Type of the value
-  char key[18];
+  ValueType key;
+
+  // C type of the value
+  CValueType type;
+
   // Value that was detected
-  char value[11];
+  union Value {
+    int as_int;
+    float as_float;
+  } value;
 };
 
 /**

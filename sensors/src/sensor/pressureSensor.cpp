@@ -17,9 +17,13 @@ PressureSensor::PressureSensor() {
   m_valuesCount = 3;
   m_values = new RawValue[m_valuesCount];
 
-  strcpy(m_values[ID_TEMPERATURE].key, "temperature");
-  strcpy(m_values[ID_PRESSURE].key, "pressure");
-  strcpy(m_values[ID_ALTITUDE].key, "altitude");
+  m_values[ID_TEMPERATURE].key = ValueType::temperature;
+  m_values[ID_PRESSURE].key = ValueType::pressure;
+  m_values[ID_ALTITUDE].key = ValueType::altitude;
+
+  m_values[ID_TEMPERATURE].type = CValueType::FLOAT;
+  m_values[ID_PRESSURE].type = CValueType::FLOAT;
+  m_values[ID_ALTITUDE].type = CValueType::FLOAT;
 }
 
 void PressureSensor::begin() {
@@ -62,7 +66,7 @@ void PressureSensor::sense() {
   LOG_INFO("Pressure = %.2f hPa\n", pressure);
   LOG_INFO("Approx Altitude = %.2f m\n", altitude);
 
-  snprintf(m_values[ID_TEMPERATURE].value, sizeof(m_values[ID_TEMPERATURE].value), "%.2f", temperature);
-  snprintf(m_values[ID_PRESSURE].value, sizeof(m_values[ID_PRESSURE].value), "%.2f", pressure);
-  snprintf(m_values[ID_ALTITUDE].value, sizeof(m_values[ID_ALTITUDE].value), "%.2f", altitude);
+  m_values[ID_TEMPERATURE].value.as_float = temperature;
+  m_values[ID_PRESSURE].value.as_float = pressure;
+  m_values[ID_ALTITUDE].value.as_float = altitude;
 }
