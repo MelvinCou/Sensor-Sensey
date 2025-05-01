@@ -4,6 +4,21 @@
 #include <data.pb.h>
 #include <pb_decode.h>
 
+#include <better_enums.hpp>
+// clang-format off
+BETTER_ENUM(
+  ValueTypeStr,
+  unsigned char,
+
+  analogValue = ValueType::analogValue,
+  voltage = ValueType::voltage,
+
+  temperature = ValueType::temperature,
+  pressure = ValueType::pressure,
+  altitude = ValueType::altitude
+);
+// clang-format on
+
 #include <Logger.hpp>
 
 #define RADIO_BOARD_AUTO
@@ -106,7 +121,18 @@ void printReception(const Data& data) {
 #if LOG_LEVEL >= LOG_LEVEL_INFO
   LOG_INFO("[SX1262] Data: sensor_id: %s, sensor_pin: %d\n", decoded.sensor_id, decoded.sensor_pin);
   for (size_t i = 0; i < data.values_count; i++) {
-    LOG_INFO("[SX1262]\t %d value_type: %s, value: %s\n", i, decoded.values[i].value_type, decoded.values[i].value);
+    const char* valueType = ValueTypeStr::_from_index(decoded.values[i].value_type)._to_string();
+    switch (data.values[i].which_value) {
+      case Value_as_int_tag:
+        LOG_INFO("[SX1262]\t %d value_type: %s, value: %d\n", i, valueType, decoded.values[i].value.as_int);
+        break;
+      case Value_as_float_tag:
+        LOG_INFO("[SX1262]\t %d value_type: %s, value: %.2f\n", i, valueType, decoded.values[i].value.as_float);
+        break;
+      default:
+        LOG_ERROR("[SX1262]\t %d Unknown value_type: %s\n", i, valueType);
+        break;
+    }
   }
 #endif
 #if LOG_LEVEL >= LOG_LEVEL_DEBUG
