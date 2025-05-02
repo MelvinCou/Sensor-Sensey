@@ -40,22 +40,23 @@ void LoRaHandler::addValueToSend(const Sensor& sensor) {
   for (size_t i = 0; i < size; i++) {
     switch (values[i].type) {
       case CValueType::INT:
-        LOG_DEBUG("Adding value_type: %s value: %d\n", values[i].key, values[i].value.as_int);
+        LOG_DEBUG("Adding value_type: %d value: %d\n", values[i].key, values[i].value.as_int);
         data.values[data.values_count].which_value = Value_as_int_tag;
         data.values[data.values_count].value.as_int = values[i].value.as_int;
         break;
       case CValueType::FLOAT:
-        LOG_DEBUG("Adding value_type: %s value: %.2f\n", values[i].key, values[i].value.as_float);
+        LOG_DEBUG("Adding value_type: %d value: %.2f\n", values[i].key, values[i].value.as_float);
         data.values[data.values_count].which_value = Value_as_float_tag;
         data.values[data.values_count].value.as_float = values[i].value.as_float;
         break;
       default:
-        LOG_ERROR("Unknown value_type: %s\n", values[i].key);
+        LOG_ERROR("Unknown value_type: %d\n", values[i].key);
         continue;
     }
     data.values[data.values_count].value_type = values[i].key;
     data.values_count++;
   }
+  strcpy(data.sensor_id, SENSOR_COM_ID);
 }
 
 void LoRaHandler::send() {

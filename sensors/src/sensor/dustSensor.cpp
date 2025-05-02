@@ -13,9 +13,9 @@ DustSensor::DustSensor() {
   m_values = new RawValue[m_valuesCount];
 
   m_values[ID_ANALOG_VOLTAGE].key = ValueType::analogValue;
-  m_values[ID_VOLTAGE].key = ValueType::voltage;
-
   m_values[ID_ANALOG_VOLTAGE].type = CValueType::INT;
+
+  m_values[ID_VOLTAGE].key = ValueType::voltage;
   m_values[ID_VOLTAGE].type = CValueType::FLOAT;
 
   pinMode(DUST_ILED_PIN, OUTPUT);
@@ -36,5 +36,5 @@ void DustSensor::sense() {
   LOG_INFO("Raw Value: %d | Voltage: %.2f\n", analogValue, voltage);
 
   m_values[ID_ANALOG_VOLTAGE].value.as_int = analogValue;
-  m_values[ID_ANALOG_VOLTAGE].value.as_float = voltage;
+  m_values[ID_VOLTAGE].value.as_float = voltage;
 }

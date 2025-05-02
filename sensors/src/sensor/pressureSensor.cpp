@@ -18,11 +18,12 @@ PressureSensor::PressureSensor() {
   m_values = new RawValue[m_valuesCount];
 
   m_values[ID_TEMPERATURE].key = ValueType::temperature;
-  m_values[ID_PRESSURE].key = ValueType::pressure;
-  m_values[ID_ALTITUDE].key = ValueType::altitude;
-
   m_values[ID_TEMPERATURE].type = CValueType::FLOAT;
+
+  m_values[ID_PRESSURE].key = ValueType::pressure;
   m_values[ID_PRESSURE].type = CValueType::FLOAT;
+
+  m_values[ID_ALTITUDE].key = ValueType::altitude;
   m_values[ID_ALTITUDE].type = CValueType::FLOAT;
 }
 
