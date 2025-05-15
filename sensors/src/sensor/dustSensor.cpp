@@ -33,20 +33,18 @@ void DustSensor::sense() {
   // Read analog value
   int analogValue = analogRead(DUST_AOUT_PIN);
   delayMicroseconds(4);
-  
+
   // Deactivate ILED
   digitalWrite(DUST_ILED_PIN, LOW);
-  
-  // Get voltage and dust density
-  float voltage = (VCC_3300mV / 4096.0) * analogValue * 11; // In mV
-  float dust_density; // In mg/m3
 
-  if (voltage >= NO_DUST_VOLTAGE)
-  {
+  // Get voltage and dust density
+  float voltage = (VCC_3300mV / 4096.0) * analogValue * 11;  // In mV
+  float dust_density;                                        // In mg/m3
+
+  if (voltage >= NO_DUST_VOLTAGE) {
     voltage -= NO_DUST_VOLTAGE;
     dust_density = voltage * COV_RATIO / 1000;
-  }
-  else
+  } else
     dust_density = 0;
 
   // Print value
