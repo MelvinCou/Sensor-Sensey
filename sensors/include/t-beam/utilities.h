@@ -101,12 +101,15 @@
 // LR1121 Only
 #define RADIO_DIO9_PIN 33
 
-// DUST PINS
+// DUST CONF
 #define DUST_AOUT_PIN 13
 #define DUST_ILED_PIN 14
+#define NO_DUST_VOLTAGE 400  // In mV
+#define COV_RATIO 0.2
 
 // VCC References
 #define VCC_3V 3.3
+#define VCC_3300mV 3300.0
 #define VCC_5V 5
 
 #define BOARD_LED 4
