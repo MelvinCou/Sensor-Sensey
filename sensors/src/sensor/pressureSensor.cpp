@@ -33,11 +33,13 @@ void PressureSensor::begin() {
   // mode), 0x77 when plugged on ground
   if (!found) {
     found = m_bmp.begin(0x77);
-    if (found) LOG_INFO("BMP280 found at 0x77\n");
+    if (found)
+      LOG_INFO("BMP280 found at 0x77\n");
   } else {
     LOG_INFO("BMP280 found at %x\n", PRESSURE_SENSOR_I2C_ADDRESS);
   }
-  if (!found) LOG_ERROR("BMP280 not found!\n");
+  if (!found)
+    LOG_ERROR("BMP280 not found!\n");
 
   // Print chip id
   // Wire.beginTransmission(PRESSURE_SENSOR_I2C_ADDRESS);  // start writing to sensor

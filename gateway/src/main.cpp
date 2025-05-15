@@ -9,4 +9,6 @@ void setup() {
   loRaBegin();
 }
 
-void loop() { receive(); }
+void loop() {
+  receive();
+}

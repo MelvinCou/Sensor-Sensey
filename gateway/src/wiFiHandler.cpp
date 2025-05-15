@@ -8,10 +8,14 @@
 #define password "YOUR_PASSWORD"
 
 // Event manager: Connected to access point
-void connectedToWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) { LOG_INFO("\nConnected to the WiFi network"); }
+void connectedToWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
+  LOG_INFO("\nConnected to the WiFi network");
+}
 
 // Event manager : IP address obtained
-void gotIpFromWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) { LOG_INFO("Local ESP32 IP: %s", WiFi.localIP().toString().c_str()); }
+void gotIpFromWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
+  LOG_INFO("Local ESP32 IP: %s", WiFi.localIP().toString().c_str());
+}
 
 // Event manager : WiFi disconnection
 void disconnectedFromWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {

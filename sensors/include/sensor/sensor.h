@@ -41,12 +41,16 @@ class Sensor {
    * @brief Get values. must be called after sense().
    * @see sense
    */
-  const RawValue* getValues() const { return m_values; };
+  const RawValue* getValues() const {
+    return m_values;
+  };
   /**
    * @brief Get number of values.
    * @see getValues
    */
-  const size_t& getValuesCount() const { return m_valuesCount; }
+  const size_t& getValuesCount() const {
+    return m_valuesCount;
+  }
 
  protected:
   size_t m_valuesCount;

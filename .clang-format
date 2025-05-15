@@ -1,4 +1,7 @@
 ---
 BasedOnStyle: Google
 ColumnLimit: 140
----
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
