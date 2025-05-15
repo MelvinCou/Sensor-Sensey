@@ -6,14 +6,15 @@ option (nanopb_fileopt).long_names = false;
 enum ValueType {
   // types for dust sensor
 
-  analogValue = 0;
+  vo_raw = 0;
   voltage = 1;
+  dust_density = 2;
 
   // types for pressure sensor
 
-  temperature = 2;
-  pressure = 3;
-  altitude = 4;
+  temperature = 3;
+  pressure = 4;
+  altitude = 5;
 }
 
 message Value {

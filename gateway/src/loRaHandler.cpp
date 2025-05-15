@@ -10,8 +10,9 @@ BETTER_ENUM(
   ValueTypeStr,
   unsigned char,
 
-  analogValue = ValueType::analogValue,
+  vo_raw = ValueType::vo_raw,
   voltage = ValueType::voltage,
+  dust_density = ValueType::dust_density,
 
   temperature = ValueType::temperature,
   pressure = ValueType::pressure,
