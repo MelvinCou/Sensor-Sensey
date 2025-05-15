@@ -38,7 +38,9 @@ uint32_t deviceOnline = 0x00;  // set all bits to 0
 XPowersLibInterface *PMU = NULL;
 bool pmuInterrupt;
 
-static void setPmuFlag() { pmuInterrupt = true; }
+static void setPmuFlag() {
+  pmuInterrupt = true;
+}
 #endif
 
 static void enable_slow_clock();
@@ -612,7 +614,8 @@ void scanDevices(TwoWire *w) {
       Serial.println(addr, HEX);
     }
   }
-  if (nDevices == 0) Serial.println("No I2C devices found\n");
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
 
   Serial.println("Scan devices done.");
   Serial.println("\n");
