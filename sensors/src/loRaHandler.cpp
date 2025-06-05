@@ -76,3 +76,11 @@ void LoRaHandler::send() {
   }
   data.values_count = 0;
 }
+
+void LoRaHandler::sleep() {
+  LoRa.sleep();
+}
+
+void LoRaHandler::wakeUp() {
+  LoRa.idle();
+}
