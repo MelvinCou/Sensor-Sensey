@@ -3,6 +3,7 @@
 #include "loRaHandler.h"
 #include "sensor/dustSensor.h"
 #include "sensor/pressureSensor.h"
+#include "sleepHandler.h"
 #include "t-beam/boards.h"
 
 DustSensor dustSensor;
@@ -24,5 +25,16 @@ void loop() {
   LoRaHandler::addValueToSend(pressureSensor);
 
   LoRaHandler::send();
-  delay(5000);
+
+  // esp_err_t result = sleepHandler::esp32Sleep();
+
+  // Check if sleep has worked
+  // if (result == ESP_OK) {
+  //   Serial.println("Woke up from light sleep");
+  //   sleepHandler::esp32WakeUp();
+  // } else {
+  //   Serial.printf("Sleep failed! Error: %d\n", result);
+  // }
+
+  delay(15000);
 }
