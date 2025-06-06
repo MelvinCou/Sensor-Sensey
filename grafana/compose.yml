@@ -1,0 +1,23 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin      # Give anonymous users full Admin rights
+      - GF_AUTH_DISABLE_LOGIN_FORM=true       # Disable login screen completely
+      - GF_USERS_ALLOW_SIGN_UP=false           # Disable sign up (no accounts created)
+      - GF_AUTH_BASIC_ENABLED=false            # Disable basic auth
+      - GF_AUTH_LDAP_ENABLED=false             # Disable LDAP
+      - GF_AUTH_PROXY_ENABLED=false            # Disable proxy auth
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
+
+volumes:
+  grafana-data:

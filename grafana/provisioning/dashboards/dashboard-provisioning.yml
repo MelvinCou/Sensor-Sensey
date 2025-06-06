@@ -1,0 +1,14 @@
+# provisioning/dashboards/my-dashboard-provisioning.yaml
+apiVersion: 1
+
+providers:
+  - name: 'Mes Tableaux de Bord Provisionnés' # Nom du fournisseur dans l'interface Grafana
+    orgId: 1 # L'ID de l'organisation Grafana (1 est la valeur par défaut)
+    folder: '' # Laissez vide pour les tableaux de bord à la racine, ou spécifiez un nom de dossier
+    type: file # Le type de fournisseur est basé sur des fichiers locaux
+    disableDelete: false # Définit si les tableaux de bord peuvent être supprimés via l'UI de Grafana. Laissez 'false' si vous voulez les modifier.
+    editable: true # Définit si les tableaux de bord peuvent être modifiés via l'UI de Grafana. IMPORTANT pour vos besoins !
+    options:
+      path: /var/lib/grafana/dashboards # Le chemin DANS LE CONTENEUR où Grafana trouvera les fichiers .json
+      # La mise en cache est utile pour les grands nombres de dashboards.
+      # watch: false # Décommenter et mettre à true si vous voulez que Grafana surveille les changements de fichiers sans redémarrer (nécessite inotify-tools dans le conteneur)
