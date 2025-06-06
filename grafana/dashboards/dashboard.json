@@ -1,0 +1,184 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "eeo1osodbqvb4d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "columns": [],
+          "data": "[\n  {\n    \"id\": 25196956245,\n    \"sampling_rate\": null,\n    \"timestamp\": \"2025-06-06 07:48:29\",\n    \"location\": {\n      \"id\": 49,\n      \"latitude\": \"48.53\",\n      \"longitude\": \"9.2\",\n      \"altitude\": \"373.1\",\n      \"country\": \"DE\",\n      \"exact_location\": 0,\n      \"indoor\": 0\n    },\n    \"sensor\": {\n      \"id\": 107,\n      \"pin\": \"5\",\n      \"sensor_type\": {\n        \"id\": 1,\n        \"name\": \"PPD42NS\",\n        \"manufacturer\": \"Shinyei\"\n      }\n    },\n    \"sensordatavalues\": [\n      {\n        \"id\": 58013106536,\n        \"value\": \"65735.50\",\n        \"value_type\": \"durP1\"\n      }\n    ]\n  },\n  {\n    \"id\": 25196956324,\n    \"sampling_rate\": null,\n    \"timestamp\": \"2025-06-06 07:48:29\",\n    \"location\": {\n      \"id\": 49,\n      \"latitude\": \"48.53\",\n      \"longitude\": \"9.2\",\n      \"altitude\": \"373.1\",\n      \"country\": \"DE\",\n      \"exact_location\": 0,\n      \"indoor\": 0\n    },\n    \"sensor\": {\n      \"id\": 108,\n      \"pin\": \"7\",\n      \"sensor_type\": {\n        \"id\": 9,\n        \"name\": \"DHT22\",\n        \"manufacturer\": \"various\"\n      }\n    },\n    \"sensordatavalues\": [\n      {\n        \"id\": 58013106724,\n        \"value\": \"1.00\",\n        \"value_type\": \"humidity\"\n      },\n      {\n        \"id\": 58013106722,\n        \"value\": \"28.20\",\n        \"value_type\": \"temperature\"\n      }\n    ]\n  }\n]\n",
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeo1osodbqvb4d"
+          },
+          "filterExpression": "",
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "jq-backend",
+          "refId": "A",
+          "root_selector": ".[] | select(\n  .sensor.id == 113 and\n  (.sensordatavalues[] | \n   select(.value_type == \"temperature\").value | \n   tonumber) != null and\n  (.sensordatavalues[] | \n   select(.value_type == \"temperature\").value | \n   tonumber) > 0 and\n  (.sensordatavalues[] | \n   select(.value_type == \"temperature\").value | \n   tonumber) < 100\n) | {\n    timestamp: .timestamp,\n    sensor_id: .sensor.id,\n    sensor_type: .sensor.sensor_type.name,\n    temperature: (.sensordatavalues[] | select(.value_type == \"temperature\").value | tonumber)\n}",
+          "source": "url",
+          "summarizeExpression": "",
+          "type": "json",
+          "uql": "parse-json",
+          "url": "data.1h.json",
+          "url_options": {
+            "data": "",
+            "headers": [],
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Temperature",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "timestamp"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "humidity"
+              },
+              {
+                "destinationType": "string",
+                "targetField": "sensor_id"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "temperature"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [],
+            "match": "any",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2025-06-06T10:57:05.000Z",
+    "to": "2025-06-06T11:02:14.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Sensor Sensei",
+  "uid": "c0faeff2-ef00-4aa6-8109-d8751cad2f2f",
+  "version": 10
+}
