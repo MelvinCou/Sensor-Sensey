@@ -26,15 +26,15 @@ void loop() {
 
   LoRaHandler::send();
 
-  // esp_err_t result = sleepHandler::esp32Sleep();
+  esp_err_t result = sleepHandler::esp32Sleep();
 
   // Check if sleep has worked
-  // if (result == ESP_OK) {
-  //   Serial.println("Woke up from light sleep");
-  //   sleepHandler::esp32WakeUp();
-  // } else {
-  //   Serial.printf("Sleep failed! Error: %d\n", result);
-  // }
+  if (result == ESP_OK) {
+    Serial.println("Woke up from light sleep");
+    sleepHandler::esp32WakeUp();
+  } else {
+    Serial.printf("Sleep failed! Error: %d\n", result);
+  }
 
   delay(15000);
 }

@@ -14,18 +14,14 @@ esp_err_t sleepHandler::esp32Sleep() {
   // Sleep some process
   LoRaHandler::sleep();
 
-  Serial.println("Going to sleep now");
-  delay(500);
-
   // Launch light sleep
+  Serial.println("Going to sleep now");
   esp_err_t result = esp_light_sleep_start();
 
   return result;
 }
 
 void sleepHandler::esp32WakeUp() {
-  delay(100);
-
   // WakeUp sleeping process
   LoRaHandler::wakeUp();
 }
