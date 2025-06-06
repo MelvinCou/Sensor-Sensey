@@ -3,7 +3,12 @@
 #include "t-beam/boards.h"
 
 namespace sleepHandler {
-esp_err_t esp32Sleep();
+extern volatile bool activeSensor;
+extern volatile bool buttonClicked;
 
+esp_err_t interruptibleSleep(unsigned int sleepSeconds = 10);
 void esp32WakeUp();
+
+void IRAM_ATTR buttonHandler();
+void handleButtonClick();
 }  // namespace sleepHandler
