@@ -1,6 +1,8 @@
 #pragma once
 
+#include "webConfigurer.h"
+
 /**
  * @brief Wifi Connection
  */
-void wiFiConnection();
+void wiFiConnection(WebConfigurer& conf);

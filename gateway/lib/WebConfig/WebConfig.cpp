@@ -63,7 +63,7 @@ const char HTML_START[] PROGMEM =
     "}\n"
     "input {\n"
     "field-sizing: content;\n"
-    "min-width: 20%;"
+    "min-width: 20%%;"
     "}\n"
     "button {\n"
     "font-size:14pt;\n"
