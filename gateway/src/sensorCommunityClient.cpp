@@ -4,16 +4,16 @@
 
 #include "ArduinoJson.h"
 #include "HTTPClient.h"
+#include <webConfigurer.h>
 
-#define sensorCommunityUrl "http://api.sensor.community/v1/push-sensor-data/"
 HTTPClient http;
 unsigned char json[128];
 
 // HTTP request to sensor.community
-void requestSensorCommunity(String xSensor, String xPin) {
+void requestSensorCommunity(WebConfigurer& conf, String xSensor, String xPin) {
   if (WiFi.status() == WL_CONNECTED) {
     // HTTP request construction with headers
-    http.begin(sensorCommunityUrl);
+    http.begin(conf.getSensorCommunityUrl());
     http.addHeader("Content-Type", "application/json");
     http.addHeader("X-Sensor", xSensor);
     http.addHeader("X-Pin", xPin);

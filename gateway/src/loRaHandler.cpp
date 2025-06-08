@@ -24,16 +24,8 @@ BETTER_ENUM(
 
 #define RADIO_BOARD_AUTO
 #include <RadioBoards.h>
+#include <webConfigurer.h>
 Radio radio = new RadioModule();
-
-#define CONFIG_RADIO_FREQ 868.0F
-// bandwidth
-#define CONFIG_RADIO_BW 125.0F
-// spreading factor
-#define CONFIG_RADIO_SF 7U
-#define CONFIG_RADIO_CR 7U
-// sync word
-#define CONFIG_RADIO_SW 0xAB
 
 // flag to indicate that a packet was received
 volatile bool receivedFlag = false;
@@ -52,10 +44,10 @@ void setFlag(void) {
 
 void printReception(const Data& data);
 
-void loRaBegin() {
+void loRaBegin(WebConfigurer& conf) {
   // initialize SX1262 with default settings
   Serial.print(F("[SX1262] Initializing ... "));
-  int state = radio.begin(CONFIG_RADIO_FREQ, CONFIG_RADIO_BW, CONFIG_RADIO_SF, CONFIG_RADIO_CR, CONFIG_RADIO_SW);
+  int state = radio.begin(conf.getLoraRadioFreq(), conf.getLoraRadioBw(), conf.getLoraRadioSf(), conf.getLoraRadioCr(), conf.getLoraRadioSw());
   if (state == RADIOLIB_ERR_NONE) {
     Serial.println(F("success!"));
   } else {
