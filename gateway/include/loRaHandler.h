@@ -1,9 +1,10 @@
 #pragma once
+#include "webConfigurer.h"
 
 /**
  * @brief Setup LoRa
  */
-void loRaBegin();
+void loRaBegin(WebConfigurer& conf);
 
 /**
  * @brief Handle a connection (must be in a for loop)
