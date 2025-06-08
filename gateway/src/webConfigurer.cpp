@@ -92,15 +92,15 @@ String params = "["
 // clang-format on
 
 void WebConfigurer::configure() {
-  Serial.print("Configuring");
+  LOG_INFO("\nConfiguring");
   
   // Set description
   conf.setDescription(params);
-  Serial.print("Description set");
+  LOG_INFO("\nDescription set");
   
   // Set config
   conf.readConfig();
-  Serial.print("Config Read");
+  LOG_INFO("\nConfig Read");
 }
 
 void WebConfigurer::serverListen() {
