@@ -7,6 +7,7 @@
 #include <webConfigurer.h>
 
 #define AP_SSID "gatewaySsid"
+#define WEB_SERVER_MDNS "gateway" // When connected on AP_SSID wifi, access the web server through gateway.local !
 
 // Event manager: Connected to access point
 void connectedToWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
@@ -45,7 +46,7 @@ void wiFiConnection(WebConfigurer& conf) {
 
   // Start AP wifi
   WiFi.softAP(AP_SSID);
-  if (MDNS.begin("gateway")) {
-    LOG_INFO("MDNS responder started");
+  if (MDNS.begin(WEB_SERVER_MDNS)) {
+    LOG_INFO("\nMDNS responder started");
   }
 }
