@@ -1,11 +1,12 @@
 #include "wiFiHandler.h"
+#include <ESPmDNS.h>
 
 #include <Logger.hpp>
 
 #include "WiFi.h"
+#include <webConfigurer.h>
 
-#define ssid "YOUR_SSID"
-#define password "YOUR_PASSWORD"
+#define AP_SSID "gatewaySsid"
 
 // Event manager: Connected to access point
 void connectedToWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
@@ -17,13 +18,7 @@ void gotIpFromWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
   LOG_INFO("Local ESP32 IP: %s", WiFi.localIP().toString().c_str());
 }
 
-// Event manager : WiFi disconnection
-void disconnectedFromWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
-  LOG_INFO("\nDisconnected from WiFi. Attempting to reconnect...");
-  WiFi.begin(ssid, password);  // Try to connect again
-}
-
-void wiFiConnection() {
+void wiFiConnection(WebConfigurer& conf) {
   LOG_INFO("Initializing WiFi...");
 
   // Reset WiFi module to avoid errors
@@ -31,15 +26,26 @@ void wiFiConnection() {
   WiFi.mode(WIFI_OFF);
   delay(100);
 
-  // Configure station mode (say to WiFi that is used only for connection and not router)
-  WiFi.mode(WIFI_STA);
+  // Allow both STA and AP wifi connection (Ap to create local wifi and create a WebConfigurer and STA to connect to another wifi)
+  WiFi.mode(WIFI_AP_STA);
 
   // Register event handlers
   WiFi.onEvent(connectedToWiFi, ARDUINO_EVENT_WIFI_STA_CONNECTED);
   WiFi.onEvent(gotIpFromWiFi, ARDUINO_EVENT_WIFI_STA_GOT_IP);
-  WiFi.onEvent(disconnectedFromWiFi, ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
 
-  // Launch connection
-  WiFi.begin(ssid, password);
+  // Manage wifi reconnection directly to use WebConfigurer
+  WiFi.onEvent([&conf](WiFiEvent_t event, WiFiEventInfo_t info) {
+    LOG_INFO("Disconnected from WiFi. Attempting to reconnect...");
+    WiFi.begin(conf.getWifiSsid(), conf.getWifiPassword());
+  }, ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
+
+  // Start STA connection
+  WiFi.begin(conf.getWifiSsid(), conf.getWifiPassword());
   LOG_INFO("\nConnecting to WiFi...");
+
+  // Start AP wifi
+  WiFi.softAP(AP_SSID);
+  if (MDNS.begin("gateway")) {
+    LOG_INFO("MDNS responder started");
+  }
 }
