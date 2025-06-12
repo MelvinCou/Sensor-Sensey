@@ -9,4 +9,4 @@ void loRaBegin(WebConfigurer& conf);
 /**
  * @brief Handle a connection (must be in a for loop)
  */
-void receive();
+void receive(String sensorComUrl);

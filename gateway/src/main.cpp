@@ -23,5 +23,5 @@ void setup() {
 
 void loop() {
   webConfigurer.handleClient();
-  receive();
+  receive(webConfigurer.getSensorCommunityUrl());
 }
