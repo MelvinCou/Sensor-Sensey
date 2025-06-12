@@ -1,12 +1,12 @@
 #include "Arduino.h"
 #include "loRaHandler.h"
-#include "wiFiHandler.h"
 #include "webConfigurer.h"
+#include "wiFiHandler.h"
 
 WebConfigurer webConfigurer;
 
 void setup() {
-  // Reset configuration to erase sensitive data on SPIFFS 
+  // Reset configuration to erase sensitive data on SPIFFS
   // webConfigurer.reset();
 
   Serial.begin(115200);

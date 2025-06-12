@@ -23,7 +23,7 @@ class WebConfigurer {
   void handleClient();
 
   // GETTERS for each configuration parameter
-  
+
   /// @brief Gets Wifi Ssid to initiate connection
   /// @return the wifi Ssid string
   String getWifiSsid();

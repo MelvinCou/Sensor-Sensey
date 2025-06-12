@@ -1,10 +1,10 @@
-#include <WebServer.h>
-#include <ESPmDNS.h>
-
 #include "webConfigurer.h"
-#include <WebConfig.h>
-#include <Logger.hpp>
 
+#include <ESPmDNS.h>
+#include <WebConfig.h>
+#include <WebServer.h>
+
+#include <Logger.hpp>
 
 // Web server params
 #define PARAM_WIFI_SSID "wifiSsid"
@@ -17,8 +17,6 @@
 #define PARAM_LORA_RADIO_SF "loraRadioSf"
 #define PARAM_LORA_RADIO_CR "loraRadioCr"
 #define PARAM_LORA_RADIO_SW "loraRadioSw"
-
-
 
 // clang-format off
 
@@ -93,11 +91,11 @@ String params = "["
 
 void WebConfigurer::configure() {
   LOG_INFO("\nConfiguring");
-  
+
   // Set description
   conf.setDescription(params);
   LOG_INFO("\nDescription set");
-  
+
   // Set config
   conf.readConfig();
   LOG_INFO("\nConfig Read");
@@ -117,14 +115,14 @@ void WebConfigurer::serverClose() {
   server.close();
 }
 
-void WebConfigurer::handleClient(){
+void WebConfigurer::handleClient() {
   server.handleClient();
 }
 
 // GETTERS
 
-String WebConfigurer::getWifiSsid() { 
-  return conf.getString(PARAM_WIFI_SSID); 
+String WebConfigurer::getWifiSsid() {
+  return conf.getString(PARAM_WIFI_SSID);
 }
 
 String WebConfigurer::getWifiPassword() {
@@ -133,29 +131,27 @@ String WebConfigurer::getWifiPassword() {
 
 String WebConfigurer::getSensorCommunityUrl() {
   char buffer[100];
-  snprintf(buffer, sizeof(buffer), "%s://%s%s",
-           conf.getString(PARAM_SENSOR_COM_PROTOCOLE).c_str(),
-           conf.getString(PARAM_SENSOR_COM_DOMAIN).c_str(),
-           conf.getString(PARAM_SENSOR_COM_ENDPOINT).c_str());
+  snprintf(buffer, sizeof(buffer), "%s://%s%s", conf.getString(PARAM_SENSOR_COM_PROTOCOLE).c_str(),
+           conf.getString(PARAM_SENSOR_COM_DOMAIN).c_str(), conf.getString(PARAM_SENSOR_COM_ENDPOINT).c_str());
   return String(buffer);
 }
 
-float WebConfigurer::getLoraRadioFreq() { 
+float WebConfigurer::getLoraRadioFreq() {
   return conf.getFloat(PARAM_LORA_RADIO_FREQ);
 }
 
-float WebConfigurer::getLoraRadioBw() { 
+float WebConfigurer::getLoraRadioBw() {
   return conf.getFloat(PARAM_LORA_RADIO_BW);
 }
 
-uint8_t WebConfigurer::getLoraRadioSf() { 
+uint8_t WebConfigurer::getLoraRadioSf() {
   return conf.getInt(PARAM_LORA_RADIO_SF);
 }
 
-uint8_t WebConfigurer::getLoraRadioCr() { 
+uint8_t WebConfigurer::getLoraRadioCr() {
   return conf.getInt(PARAM_LORA_RADIO_CR);
 }
 
-uint8_t WebConfigurer::getLoraRadioSw() { 
+uint8_t WebConfigurer::getLoraRadioSw() {
   return conf.getInt(PARAM_LORA_RADIO_SW);
 }
