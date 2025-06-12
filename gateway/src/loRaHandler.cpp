@@ -47,7 +47,8 @@ void printReception(const Data& data);
 void loRaBegin(WebConfigurer& conf) {
   // initialize SX1262 with default settings
   Serial.print(F("[SX1262] Initializing ... "));
-  int state = radio.begin(conf.getLoraRadioFreq(), conf.getLoraRadioBw(), conf.getLoraRadioSf(), conf.getLoraRadioCr(), conf.getLoraRadioSw());
+  int state =
+      radio.begin(conf.getLoraRadioFreq(), conf.getLoraRadioBw(), conf.getLoraRadioSf(), conf.getLoraRadioCr(), conf.getLoraRadioSw());
   if (state == RADIOLIB_ERR_NONE) {
     Serial.println(F("success!"));
   } else {

@@ -1,13 +1,14 @@
 #include "wiFiHandler.h"
+
 #include <ESPmDNS.h>
+#include <webConfigurer.h>
 
 #include <Logger.hpp>
 
 #include "WiFi.h"
-#include <webConfigurer.h>
 
 #define AP_SSID "gatewaySsid"
-#define WEB_SERVER_MDNS "gateway" // When connected on AP_SSID wifi, access the web server through gateway.local !
+#define WEB_SERVER_MDNS "gateway"  // When connected on AP_SSID wifi, access the web server through gateway.local !
 
 // Event manager: Connected to access point
 void connectedToWiFi(WiFiEvent_t wifiEvent, WiFiEventInfo_t wifiInfo) {
@@ -35,10 +36,12 @@ void wiFiConnection(WebConfigurer& conf) {
   WiFi.onEvent(gotIpFromWiFi, ARDUINO_EVENT_WIFI_STA_GOT_IP);
 
   // Manage wifi reconnection directly to use WebConfigurer
-  WiFi.onEvent([&conf](WiFiEvent_t event, WiFiEventInfo_t info) {
-    LOG_INFO("Disconnected from WiFi. Attempting to reconnect...");
-    WiFi.begin(conf.getWifiSsid(), conf.getWifiPassword());
-  }, ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
+  WiFi.onEvent(
+      [&conf](WiFiEvent_t event, WiFiEventInfo_t info) {
+        LOG_INFO("Disconnected from WiFi. Attempting to reconnect...");
+        WiFi.begin(conf.getWifiSsid(), conf.getWifiPassword());
+      },
+      ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
 
   // Start STA connection
   WiFi.begin(conf.getWifiSsid(), conf.getWifiPassword());
