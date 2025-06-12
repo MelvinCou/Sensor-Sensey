@@ -3,28 +3,14 @@
 #include <RadioLib.h>
 #include <data.pb.h>
 #include <pb_decode.h>
-
-#include <better_enums.hpp>
-// clang-format off
-BETTER_ENUM(
-  ValueTypeStr,
-  unsigned char,
-
-  vo_raw = ValueType::vo_raw,
-  voltage = ValueType::voltage,
-  dust_density = ValueType::dust_density,
-
-  temperature = ValueType::temperature,
-  pressure = ValueType::pressure,
-  altitude = ValueType::altitude
-);
-// clang-format on
+#include <ValueTypeStr.h>
 
 #include <Logger.hpp>
 
 #define RADIO_BOARD_AUTO
 #include <RadioBoards.h>
 #include <webConfigurer.h>
+#include <sensorCommunityClient.h>
 Radio radio = new RadioModule();
 
 // flag to indicate that a packet was received
@@ -80,7 +66,7 @@ uint8_t buffer[Data_size + 1];
 Data decoded = Data_init_zero;
 pb_istream_t istream;
 
-void receive() {
+void receive(String sensorComUrl) {
   // check if the flag is set
   if (receivedFlag) {
     // reset flag
@@ -100,6 +86,9 @@ void receive() {
         return;
       }
       printReception(decoded);
+
+      // Send API request
+      requestSensorCommunity(sensorComUrl, decoded);
     } else if (state == RADIOLIB_ERR_CRC_MISMATCH) {
       // packet was received, but is malformed
       LOG_ERROR("CRC error!");

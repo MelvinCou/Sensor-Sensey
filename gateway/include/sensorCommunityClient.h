@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Arduino.h"
-#include "webConfigurer.h"
+#include <data.pb.h>
 
 /**
  * @brief Function used for request sensor community through http
  */
-void requestSensorCommunity(WebConfigurer& conf, String xSensor, String xPin);
+void requestSensorCommunity(String& sensorComUrl, const Data& data);
