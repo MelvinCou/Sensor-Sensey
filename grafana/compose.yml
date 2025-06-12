@@ -2,6 +2,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    user: root
     ports:
       - "3000:3000"
     volumes:
@@ -10,14 +11,45 @@ services:
       - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ./dashboards:/var/lib/grafana/dashboards
     environment:
+      # Authentification
       - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin      # Give anonymous users full Admin rights
-      - GF_AUTH_DISABLE_LOGIN_FORM=true       # Disable login screen completely
-      - GF_USERS_ALLOW_SIGN_UP=false           # Disable sign up (no accounts created)
-      - GF_AUTH_BASIC_ENABLED=false            # Disable basic auth
-      - GF_AUTH_LDAP_ENABLED=false             # Disable LDAP
-      - GF_AUTH_PROXY_ENABLED=false            # Disable proxy auth
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin # Give anonymous users full Admin rights
+      - GF_AUTH_DISABLE_LOGIN_FORM=true # Disable login screen completely
+
+      # Probably useless/redundant
+      # - GF_USERS_ALLOW_SIGN_UP=false # Disable sign up (no accounts created)
+      # - GF_AUTH_BASIC_ENABLED=false # Disable basic auth
+      # - GF_AUTH_LDAP_ENABLED=false # Disable LDAP
+      # - GF_AUTH_PROXY_ENABLED=false # Disable proxy auth
+
+      # Datasource plugins
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
 
+      # InfluxDB
+      - INFLUXDB_GRAFANA_ORG=my_org
+      - INFLUXDB_GRAFANA_BUCKET=sensor_data
+      - INFLUXDB_GRAFANA_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
+    # entrypoint:
+    #   - /bin/sh
+    #   - -c
+    #   - |
+    #     envsubst '${INFLUXDB_GRAFANA_BUCKET} ${INFLUXDB_GRAFANA_ORG} ${INFLUXDB_GRAFANA_TOKEN}' < /etc/grafana/provisioning/datasources/influxdb.yml.template > /etc/grafana/provisioning/datasources/influxdb.yml
+    #     exec /run.sh
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${DOCKER_INFLUXDB_INIT_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=my_org
+      - DOCKER_INFLUXDB_INIT_BUCKET=sensor_data
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
 volumes:
   grafana-data:
+  influxdb-data:
