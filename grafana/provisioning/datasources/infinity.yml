@@ -8,7 +8,6 @@ datasources:
     url: "https://data.sensor.community/static/v2/"
     basicAuth: false
     basicAuthUser: ""
-    isDefault: true
     jsonData:
       allowDangerousHTTPMethods: false
       allowedHosts:
@@ -18,3 +17,4 @@ datasources:
       timeoutInSeconds: 200
     readOnly: false
     apiVersion: ""
+    isDefault: false
