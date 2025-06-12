@@ -9,8 +9,6 @@
 DustSensor dustSensor;
 PressureSensor pressureSensor;
 
-#define LAUNCH_SENSOR_PIN 38
-
 void setup() {
   LOG_INFO("Setting up boards...\n");
   setupBoards();
@@ -33,7 +31,7 @@ void loop() {
   }
 
   if (sleepHandler::activeSensor) {
-    Serial.println("Sensors ON - Collect data...");
+    LOG_INFO("Sensors ON - Collect data...\n");
 
     dustSensor.sense();
     LoRaHandler::addValueToSend(dustSensor);
@@ -42,18 +40,10 @@ void loop() {
 
     LoRaHandler::send();
 
-    esp_err_t result = sleepHandler::interruptibleSleep();
-
-    // Check if sleep has worked and launch back sleep process
-    if (result == ESP_OK) {
-      Serial.println("Woke up from light sleep");
-      sleepHandler::esp32WakeUp();
-    } else {
-      Serial.printf("Sleep failed! Error: %d\n", result);
-    }
+    sleepHandler::interruptibleSleep();
   } else {
-    Serial.println("Sensors OFF - Wait...");
+    LOG_INFO("Sensors OFF - Wait...\n");
 
-    delay(2000);
+    delay(3000);
   }
 }
