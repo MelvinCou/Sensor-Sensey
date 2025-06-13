@@ -11,7 +11,7 @@ INFLUXDB_TOKEN = dotenv.get_key(".env", "DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
 print(INFLUXDB_TOKEN)
 
 SENSOR_COMMUNITY_API_URL = "https://data.sensor.community/static/v2/data.json"
-SENSOR_IDS = [94395, 94396]
+SENSOR_IDS = [94395, 94396, 93458, 93459] # mock pressure, mock dust, real pressure, real dust
 
 COLLECTION_INTERVAL_SECONDS = 600 # CAREFUL : too frequent blocks IP !!
 
