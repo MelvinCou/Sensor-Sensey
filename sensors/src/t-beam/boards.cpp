@@ -24,6 +24,7 @@
 #endif
 #include "driver/gpio.h"
 #endif  // ARDUINO_ARCH_ESP32
+#include <webConfigurer.h>
 
 static DevInfo_t devInfo;
 
@@ -381,7 +382,7 @@ void getChipInfo() {
   Serial.println("-----------------------------------");
 }
 
-void setupBoards(bool disable_u8g2) {
+void setupBoards(WebConfigurer& conf, bool disable_u8g2) {
   Serial.begin(115200);
 
   // while (!Serial);
@@ -399,7 +400,7 @@ void setupBoards(bool disable_u8g2) {
   SPI.begin();
 #endif
 
-  LoRaHandler::loRaBegin();
+  LoRaHandler::loRaBegin(conf);
 
 #ifdef I2C_SDA
   Wire.begin(I2C_SDA, I2C_SCL);

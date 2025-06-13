@@ -4,16 +4,17 @@
 #include <pb_encode.h>
 
 #include <Logger.hpp>
+#include <webConfigurer.h>
 
 #include "data.pb.h"
 #include "t-beam/utilities.h"
 
-void LoRaHandler::loRaBegin() {
+void LoRaHandler::loRaBegin(WebConfigurer& conf) {
   LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DIO0_PIN);
-  if (!LoRa.begin(CONFIG_RADIO_FREQ)) {
+  if (!LoRa.begin(conf.getLoraRadioFreq())) {
     LOG_ERROR("Starting LoRa failed!\n");
   }
-  LoRa.setSignalBandwidth(CONFIG_RADIO_BW * 1000);
+  LoRa.setSignalBandwidth(conf.getLoraRadioBw() * 1000);
   LoRa.setSyncWord(0xAB);
   LoRa.setSpreadingFactor(7);
   LoRa.setPreambleLength(8);
@@ -30,7 +31,7 @@ uint8_t buffer[Data_size];
 pb_ostream_t ostream;
 #define MAX_VALUES sizeof(data.values) / sizeof(data.values[0])
 
-void LoRaHandler::addValueToSend(const Sensor& sensor) {
+void LoRaHandler::addValueToSend(const Sensor& sensor, const char* sensorCommunityId, uint32_t sensorPin) {
   const size_t& size = sensor.getValuesCount();
   if (size + data.values_count > MAX_VALUES) {
     LOG_ERROR("Overflow of values : %d (size) + %d (values_count) > %d (MAX_VALUES)\n", size, data.values_count, MAX_VALUES);
@@ -56,7 +57,8 @@ void LoRaHandler::addValueToSend(const Sensor& sensor) {
     data.values[data.values_count].value_type = values[i].key;
     data.values_count++;
   }
-  strcpy(data.sensor_id, SENSOR_COM_ID);
+  strcpy(data.sensor_id, sensorCommunityId);
+  data.sensor_pin = sensorPin;
 }
 
 void LoRaHandler::send() {

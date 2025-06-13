@@ -40,24 +40,10 @@
 
 // #define T_BEAM_S3_BPF
 
-// LoRa configuration
-#define CONFIG_RADIO_FREQ 868E6
-#define CONFIG_RADIO_BW 125.0
-
 // GPIO 38 button
 #define LAUNCH_SENSOR_PIN 38
 
-// Sensor community configuration
-#define SENSOR_COM_ID "esp32-1234"
-// TODO : Change PIN number according to sensor community registered pin
-#define DUST_SENSOR_COM_PIN 8
-#define DUST_SENSOR_COM_TYPE "Dust"
-
-// Pressure sensor
-#define PRESSURE_SENSOR_COM_PIN 9
-#define PRESSURE_SENSOR_COM_TYPE "Pressure"
 #define PRESSURE_SENSOR_I2C_ADDRESS 0x76
-#define LOCAL_ALTITUDE_OFFSET 1017
 
 #define UNUSED_PIN (0)
 
