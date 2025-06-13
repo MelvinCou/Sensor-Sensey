@@ -1,7 +1,8 @@
 #pragma once
 
-#include "sensor/sensor.h"
 #include <webConfigurer.h>
+
+#include "sensor/sensor.h"
 
 namespace LoRaHandler {
 void loRaBegin(WebConfigurer& conf);

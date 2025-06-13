@@ -61,7 +61,7 @@ void PressureSensor::begin() {
 void PressureSensor::sense() {
   // Get data
   float temperature = m_bmp.readTemperature();
-  float pressure = m_bmp.readPressure() / 100.0F;              // Convert Pa to hPa
+  float pressure = m_bmp.readPressure() / 100.0F;            // Convert Pa to hPa
   float altitude = m_bmp.readAltitude(localAltitudeOffset);  // Adjusted to local sea level pressure - Offset is defined in utilities.h
 
   // Print data

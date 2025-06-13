@@ -1,3 +1,5 @@
+#include <webConfigurer.h>
+
 #include <Logger.hpp>
 
 #include "loRaHandler.h"
@@ -5,7 +7,6 @@
 #include "sensor/pressureSensor.h"
 #include "sleepHandler.h"
 #include "t-beam/boards.h"
-#include <webConfigurer.h>
 
 // Initialize web server configurer
 WebConfigurer webConfigurer;
@@ -15,9 +16,9 @@ DustSensor dustSensor;
 PressureSensor pressureSensor;
 
 void setup() {
-  // Reset configuration to erase sensitive data on SPIFFS 
+  // Reset configuration to erase sensitive data on SPIFFS
   // webConfigurer.reset();
-  
+
   // Configure web server before setting boards up as there we initiate Lora within
   webConfigurer.configure();
 
@@ -56,13 +57,13 @@ void loop() {
     LOG_INFO("Sensors ON - Collect data...\n");
 
     // Only trigger dust sense if active
-    if(webConfigurer.isDustSensorActive()) {
+    if (webConfigurer.isDustSensorActive()) {
       dustSensor.sense();
       LoRaHandler::addValueToSend(dustSensor, webConfigurer.getSensorId(), webConfigurer.getDustSensorPin());
     }
 
     // Only trigger pressure sense if active
-    if(webConfigurer.isPressureSensorActive()) {
+    if (webConfigurer.isPressureSensorActive()) {
       pressureSensor.sense();
       LoRaHandler::addValueToSend(pressureSensor, webConfigurer.getSensorId(), webConfigurer.getPressureSensorPin());
     }

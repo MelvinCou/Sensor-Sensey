@@ -67,7 +67,7 @@ typedef struct {
   uint8_t flashSpeed;
 } DevInfo_t;
 
-void setupBoards(WebConfigurer& conf, bool disable_u8g2 = false);
+void setupBoards(WebConfigurer &conf, bool disable_u8g2 = false);
 
 bool beginPower();
 
