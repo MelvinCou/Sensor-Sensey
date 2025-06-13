@@ -39,3 +39,5 @@ py api_to_influx.py
 ```bash
 py random_to_api.py
 ```
+
+**You can then open Grafana at http://localhost:3000/dashboards.**
