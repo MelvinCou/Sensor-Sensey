@@ -1,11 +1,12 @@
 #pragma once
 
 #include "sensor/sensor.h"
+#include <webConfigurer.h>
 
 namespace LoRaHandler {
-void loRaBegin();
+void loRaBegin(WebConfigurer& conf);
 
-void addValueToSend(const Sensor& sensor);
+void addValueToSend(const Sensor& sensor, const char* sensorCommunityId, uint32_t sensorPin);
 
 void send();
 

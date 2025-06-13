@@ -21,6 +21,7 @@
 #include <Wire.h>
 #include <XPowersLib.h>
 #include <esp_mac.h>
+#include <webConfigurer.h>
 
 #ifndef OLED_WIRE_PORT
 #define OLED_WIRE_PORT Wire
@@ -66,7 +67,7 @@ typedef struct {
   uint8_t flashSpeed;
 } DevInfo_t;
 
-void setupBoards(bool disable_u8g2 = false);
+void setupBoards(WebConfigurer& conf, bool disable_u8g2 = false);
 
 bool beginPower();
 
