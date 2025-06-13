@@ -5,6 +5,7 @@ import time
 API_URL = "https://api.sensor.community/v1/push-sensor-data/"
 SENSOR_ID = "esp32-0000"
 SOFTWARE_VERSION = "1"
+DELAY_SECONDS = 2
 
 def send_sensor_data(pin, values):
     headers = {
@@ -41,7 +42,7 @@ def sound_sensor_values():
         {"value_type": "volume", "value": f"{random.uniform(30, 90):.2f}"}
     ]
 
-def run_forever(delay=2):
+def run_forever(delay=DELAY_SECONDS):
     try:
         while True:
             send_sensor_data(pin=3, values=bmp280_values())
