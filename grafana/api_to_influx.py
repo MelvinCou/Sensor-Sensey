@@ -13,7 +13,7 @@ print(INFLUXDB_TOKEN)
 SENSOR_COMMUNITY_API_URL = "https://data.sensor.community/static/v2/data.json"
 SENSOR_IDS = [94395, 94396]
 
-COLLECTION_INTERVAL_SECONDS = 30
+COLLECTION_INTERVAL_SECONDS = 600 # CAREFUL : too frequent blocks IP !!
 
 
 def get_sensor_data():
