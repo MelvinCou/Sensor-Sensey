@@ -1,12 +1,13 @@
-#include <WebServer.h>
-#include <ESPmDNS.h>
-
 #include "webConfigurer.h"
+
+#include <ESPmDNS.h>
 #include <WebConfig.h>
+#include <WebServer.h>
+
 #include <Logger.hpp>
 
 #define AP_SSID "sensorSsid"
-#define WEB_SERVER_MDNS "sensors" // When connected on AP_SSID wifi, access the web server through sensors.local !
+#define WEB_SERVER_MDNS "sensors"  // When connected on AP_SSID wifi, access the web server through sensors.local !
 
 // Web server params
 #define PARAM_SENSOR_ID "sensorId"
@@ -17,7 +18,6 @@
 #define PARAM_LOCAL_ALT_OFFSET "localAltitudeOffset"
 #define PARAM_LORA_RADIO_FREQ "loraRadioFreq"
 #define PARAM_LORA_RADIO_BW "loraRadioBw"
-
 
 // clang-format off
 
@@ -76,7 +76,6 @@ String params = "["
 
 // clang-format on
 
-
 /// @brief Inits AP wifi
 void initWiFi() {
   WiFi.mode(WIFI_AP);
@@ -89,11 +88,11 @@ void initWiFi() {
 
 void WebConfigurer::configure() {
   LOG_INFO("Configuring\n");
-  
+
   // Set description
   conf.setDescription(params);
   LOG_INFO("Description set\n");
-  
+
   // Set config
   conf.readConfig();
   LOG_INFO("Config Read\n");
@@ -115,14 +114,14 @@ void WebConfigurer::serverClose() {
   server.close();
 }
 
-void WebConfigurer::handleClient(){
+void WebConfigurer::handleClient() {
   server.handleClient();
 }
 
 // GETTERS
 
-const char* WebConfigurer::getSensorId() { 
-  return conf.getValue(PARAM_SENSOR_ID); 
+const char* WebConfigurer::getSensorId() {
+  return conf.getValue(PARAM_SENSOR_ID);
 }
 
 bool WebConfigurer::isDustSensorActive() {
@@ -132,22 +131,22 @@ int WebConfigurer::getDustSensorPin() {
   return conf.getInt(PARAM_DUST_SENSOR_ACTIVE);
 }
 
-bool WebConfigurer::isPressureSensorActive() { 
+bool WebConfigurer::isPressureSensorActive() {
   return conf.getBool(PARAM_PRESSURE_SENSOR_ACTIVE);
 }
 
-int WebConfigurer::getPressureSensorPin() { 
+int WebConfigurer::getPressureSensorPin() {
   return conf.getInt(PARAM_PRESSURE_SENSOR_PIN);
 }
 
-float WebConfigurer::getLocalAltOffset() { 
+float WebConfigurer::getLocalAltOffset() {
   return conf.getFloat(PARAM_LOCAL_ALT_OFFSET);
 }
 
-long WebConfigurer::getLoraRadioFreq() { 
+long WebConfigurer::getLoraRadioFreq() {
   return conf.getInt(PARAM_LORA_RADIO_FREQ) * 1000000L;
 }
 
-float WebConfigurer::getLoraRadioBw() { 
+float WebConfigurer::getLoraRadioBw() {
   return conf.getFloat(PARAM_LORA_RADIO_BW);
 }

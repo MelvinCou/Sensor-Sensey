@@ -2,9 +2,9 @@
 
 #include <LoRa.h>
 #include <pb_encode.h>
+#include <webConfigurer.h>
 
 #include <Logger.hpp>
-#include <webConfigurer.h>
 
 #include "data.pb.h"
 #include "t-beam/utilities.h"

@@ -382,7 +382,7 @@ void getChipInfo() {
   Serial.println("-----------------------------------");
 }
 
-void setupBoards(WebConfigurer& conf, bool disable_u8g2) {
+void setupBoards(WebConfigurer &conf, bool disable_u8g2) {
   Serial.begin(115200);
 
   // while (!Serial);
