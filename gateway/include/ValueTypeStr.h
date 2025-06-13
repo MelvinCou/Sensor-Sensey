@@ -1,6 +1,7 @@
 #pragma once
 
 #include <data.pb.h>
+
 #include <better_enums.hpp>
 
 // clang-format off

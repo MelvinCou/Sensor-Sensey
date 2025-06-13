@@ -1,16 +1,16 @@
 #include "loRaHandler.h"
 
 #include <RadioLib.h>
+#include <ValueTypeStr.h>
 #include <data.pb.h>
 #include <pb_decode.h>
-#include <ValueTypeStr.h>
 
 #include <Logger.hpp>
 
 #define RADIO_BOARD_AUTO
 #include <RadioBoards.h>
-#include <webConfigurer.h>
 #include <sensorCommunityClient.h>
+#include <webConfigurer.h>
 Radio radio = new RadioModule();
 
 // flag to indicate that a packet was received
