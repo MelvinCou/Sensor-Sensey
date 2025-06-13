@@ -1,8 +1,9 @@
 #include "sensorCommunityClient.h"
 
-#include <data.pb.h>
-#include <Logger.hpp>
 #include <ValueTypeStr.h>
+#include <data.pb.h>
+
+#include <Logger.hpp>
 
 #include "ArduinoJson.h"
 #include "HTTPClient.h"
@@ -15,7 +16,6 @@ JsonDocument createJsonDocument(const Data& data) {
 
   // Add values received to JsonArray
   for (size_t i = 0; i < data.values_count; i++) {
-
     const char* valueType = ValueTypeStr::_from_index(data.values[i].value_type)._to_string();
 
     JsonObject jsonObj;
@@ -56,7 +56,7 @@ void requestSensorCommunity(String& sensorComUrl, const Data& data) {
 
     LOG_INFO("Sending HTTP POST request of size %d to sensor API...\n", payloadSize);
     LOG_TRACE("SENSOR URL: %s\n", sensorComUrl.c_str());
-    
+
     LOG_TRACE("Sending raw data: \n %s\n", json);
 
     int httpCode = http.POST(json, payloadSize);

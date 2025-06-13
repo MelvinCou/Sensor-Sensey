@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Arduino.h"
 #include <data.pb.h>
+
+#include "Arduino.h"
 
 /**
  * @brief Function used for request sensor community through http
