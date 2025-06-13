@@ -60,15 +60,15 @@ void loop() {
     if (webConfigurer.isDustSensorActive()) {
       dustSensor.sense();
       LoRaHandler::addValueToSend(dustSensor, webConfigurer.getSensorId(), webConfigurer.getDustSensorPin());
+      LoRaHandler::send();
     }
 
     // Only trigger pressure sense if active
     if (webConfigurer.isPressureSensorActive()) {
       pressureSensor.sense();
       LoRaHandler::addValueToSend(pressureSensor, webConfigurer.getSensorId(), webConfigurer.getPressureSensorPin());
+      LoRaHandler::send();
     }
-
-    LoRaHandler::send();
 
     sleepHandler::interruptibleSleep();
   } else {
