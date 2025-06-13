@@ -620,35 +620,45 @@
     "list": [
       {
         "current": {
-          "text": "94395",
-          "value": "94395"
+          "text": "93458",
+          "value": "93458"
         },
         "name": "pressure_sensor_id",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "94395",
             "value": "94395"
+          },
+          {
+            "selected": true,
+            "text": "93458",
+            "value": "93458"
           }
         ],
-        "query": "94395",
-        "type": "textbox"
+        "query": "94395,93458",
+        "type": "custom"
       },
       {
         "current": {
-          "text": "94396",
-          "value": "94396"
+          "text": "93459",
+          "value": "93459"
         },
         "name": "dust_sensor_id",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "94396",
             "value": "94396"
+          },
+          {
+            "selected": true,
+            "text": "93459",
+            "value": "93459"
           }
         ],
-        "query": "94396",
-        "type": "textbox"
+        "query": "94396,93459",
+        "type": "custom"
       }
     ]
   },
@@ -660,5 +670,5 @@
   "timezone": "browser",
   "title": "Sensor Sensei",
   "uid": "82ba80b5-42ad-4806-af6a-affd183d718f",
-  "version": 11
+  "version": 12
 }
