@@ -1,3 +1,25 @@
+> **_Make sure you cd to grafana folder first._**
+
+# SETUP
+
+**Create venv**
+
+```bash
+py -m venv venv
+```
+
+**Activate venv**
+
+```bash
+source venv/bin/activate
+```
+
+**Install requirements**
+
+```bash
+pip install -r requirements.txt
+```
+
 # HOW TO USE
 
 **1. First, launch Grafana and InfluxDB :**
