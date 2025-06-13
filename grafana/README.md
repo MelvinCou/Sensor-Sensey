@@ -2,6 +2,14 @@
 
 # SETUP
 
+### Credentials
+
+- Create copy of .env.example, rename it .env, open it and replace values with your own credentials
+
+- Create copy of dashboards/datasources/influxdb.yml.example (in same folder), rename it influxdb.yml, open it and replace values with your own credentials
+
+### Python environnment
+
 **Create venv**
 
 ```bash
@@ -40,4 +48,4 @@ py api_to_influx.py
 py random_to_api.py
 ```
 
-**You can then open Grafana at http://localhost:3000/dashboards.**
+**You can then open Grafana at http://localhost:3000/dashboards. Dashboard should load automatically.**
