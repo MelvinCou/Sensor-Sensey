@@ -7,8 +7,7 @@
 #include "ArduinoJson.h"
 #include "HTTPClient.h"
 
-HTTPClient http;
-unsigned char json[128];
+unsigned char json[256];
 
 JsonDocument createJsonDocument(const Data& data) {
   JsonDocument doc;
@@ -45,16 +44,21 @@ JsonDocument createJsonDocument(const Data& data) {
 // HTTP request to sensor.community
 void requestSensorCommunity(String& sensorComUrl, const Data& data) {
   if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
     // HTTP request construction with headers
     http.begin(sensorComUrl);
     http.addHeader("Content-Type", "application/json");
     http.addHeader("X-Sensor", data.sensor_id);
-    http.addHeader("X-Pin", std::to_string(data.sensor_pin).c_str());
+    http.addHeader("X-Pin", String(data.sensor_pin));
 
     // Serialize JSON data before POST request
     size_t payloadSize = serializeJson(createJsonDocument(data), json);
 
     LOG_INFO("Sending HTTP POST request of size %d to sensor API...\n", payloadSize);
+    LOG_TRACE("SENSOR URL: %s\n", sensorComUrl.c_str());
+    
+    LOG_TRACE("Sending raw data: \n %s\n", json);
+
     int httpCode = http.POST(json, payloadSize);
     LOG_INFO("HTTP CODE, code: %d\n", httpCode);
 
