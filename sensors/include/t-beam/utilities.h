@@ -91,8 +91,8 @@
 #define RADIO_DIO9_PIN 33
 
 // DUST CONF
-#define DUST_AOUT_PIN 13
-#define DUST_ILED_PIN 14
+#define DUST_AOUT_PIN 35
+#define DUST_ILED_PIN 15
 #define NO_DUST_VOLTAGE 400  // In mV
 #define COV_RATIO 0.2
 
