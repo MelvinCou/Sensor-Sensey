@@ -38,7 +38,7 @@ String params = "["
     "'name':'" + String(PARAM_DUST_SENSOR_PIN) + "',"
     "'label':'Dust sensor PIN on Sensor Community',"
     "'type':"+String(INPUTNUMBER)+","
-    "'default':'8'"
+    "'default':'7'"
   "},"
   "{"
     "'name':'" + String(PARAM_PRESSURE_SENSOR_ACTIVE) + "',"
@@ -50,7 +50,7 @@ String params = "["
     "'name':'" + String(PARAM_PRESSURE_SENSOR_PIN) + "',"
     "'label':'Pressure sensor PIN on Sensor Community',"
     "'type':"+String(INPUTNUMBER)+","
-    "'default':'9'"
+    "'default':'10'"
   "},"
   "{"
     "'name':'" + String(PARAM_LOCAL_ALT_OFFSET) + "',"
@@ -127,8 +127,9 @@ const char* WebConfigurer::getSensorId() {
 bool WebConfigurer::isDustSensorActive() {
   return conf.getBool(PARAM_DUST_SENSOR_ACTIVE);
 }
+
 int WebConfigurer::getDustSensorPin() {
-  return conf.getInt(PARAM_DUST_SENSOR_ACTIVE);
+  return conf.getInt(PARAM_DUST_SENSOR_PIN);
 }
 
 bool WebConfigurer::isPressureSensorActive() {
