@@ -1,6 +1,7 @@
 # Sensor-Sensey
 
-Original repository : https://github.com/MelvinCou/Sensor-Sensey
+Original repository: https://github.com/MelvinCou/Sensor-Sensey  
+Documentation: https://github.com/MelvinCou/Sensor-Sensey/wiki
 
 ## Getting started
 
